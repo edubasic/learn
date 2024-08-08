@@ -53,6 +53,58 @@
         code {
             font-family: monospace;
         }
+        .schedule-container {
+    width: 70%;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+    text-align: center;
+    color: #333333;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.schedule-table th, .schedule-table td {
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.schedule-table th {
+    background-color: #4CAF50;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.schedule-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.schedule-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.schedule-table td {
+    color: #555555;
+}
+
+.schedule-table td:not(:empty)::before {
+    content: '📚';
+    display: block;
+    font-size: 1.2em;
+}
     </style>
 </head>
 <body>
@@ -149,10 +201,47 @@
                     <p><i class="fa-solid fa-certificate"></i> Certificate: No </p>
                     <p><i class="fa-solid fa-file-signature"></i> (We will check your learning in this and We will send you a certificate to receive the scholarships in your email. Thank you! )</p>
                     <img id="userFlag" src="" alt="Country Flag" style="width: 64px; height: auto;">
-                </div>
-            </div>
-        </main>
-    </div>
+                    <div class="schedule-container">
+                        <h1>Study Online Schedule IN 28TH</h1>
+                        <table class="schedule-table">
+                            <thead>
+                                <tr>
+                                    <th>Day</th>
+                                    <th>Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Monday</td>
+                                    <td>7:00 PM</td>
+                                </tr>
+                                <tr>
+                                    <td>Tuesday</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Wednesday</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Thursday</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Friday</td>
+                                    <td>8:00 PM</td>
+                                </tr>
+                                <tr>
+                                    <td>Saturday</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Sunday</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
     <script src="script.js"></script>
     <script> 
