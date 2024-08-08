@@ -223,3 +223,84 @@ input[type="radio"] {
 .update-soon-content button:hover {
     background-color: #005fa3;
 }
+.personal-page {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.personal-page h1 {
+    text-align: center;
+    color: #333;
+    font-size: 2em;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+#personalInfoDisplay {
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+}
+
+#personalInfoDisplay p {
+    margin: 10px 0;
+    font-size: 1.1em;
+    color: #333;
+}
+
+#personalInfoDisplay i {
+    color: #007BFF;
+    margin-right: 10px;
+}
+
+#userFlag {
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+}
+
+.schedule-container {
+    margin-top: 20px;
+}
+
+.schedule-container h1 {
+    font-size: 1.8em;
+    color: #333;
+    border-bottom: 2px solid #007BFF;
+    padding-bottom: 10px;
+}
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.schedule-table th, .schedule-table td {
+    border: 1px solid #e0e0e0;
+    padding: 12px;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.schedule-table th {
+    background-color: #007BFF;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.schedule-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.schedule-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.schedule-table td {
+    color: #555555;
+}
