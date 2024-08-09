@@ -1,444 +1,514 @@
-document.addEventListener("DOMContentLoaded", () => {
-  // Kiểm tra nếu người dùng đã đăng nhập
-  if (localStorage.getItem("user")) {
-    document.getElementById("loginPage").style.display = "none";
-    document.getElementById("homePage").style.display = "block";
-    document.getElementById("sidebar").style.display = "block";
-    document.getElementById("navbarMenu").style.display = "none";
-    updatePersonalInfo();
-  } else {
-    document.getElementById("loginPage").style.display = "block";
-    document.getElementById("homePage").style.display = "none";
-    document.getElementById("coursePage").style.display = "none";
-    document.getElementById("personalPage").style.display = "none";
-    document.getElementById("sidebar").style.display = "none";
-  }
-});
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDU BASIC</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel='shortcut icon' href='./image/icon.ico' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        
+        a {
+            text-decoration: none;
+        }
 
-// Dữ liệu nội dung khóa học
-const courseContentData = {
-  1: {
-    1: `<div class="course-content">
-                <img src="./image/fullstack.jpg" alt="Full Stack Developer">
-                <h2 class="title">Full Stack Developer</h2>
-                <p class="subtitle">Step by step guide to becoming a modern full stack developer in 2024</p>
-            </div>`,
-    2: `
-                    <div class="section-content" id="introHTMLContent">
-                <p>HTML cung cấp cấu trúc cơ bản cho một trang web bằng cách sử dụng các thẻ như &lt;div&gt;, &lt;span&gt;, &lt;h1&gt;, và nhiều thẻ khác.</p>
-            </div>
-            <div class="section" id="vsCodeSetup">
-                <h3 class="section-title">Cài đặt và sử dụng phần mềm Visual Studio Code</h3>
-                <p>Visual Studio Code (VS Code) là một trình soạn thảo mã nguồn miễn phí và mạnh mẽ được phát triển bởi Microsoft.</p>
-                <button class="toggle-button" onclick="toggleSection('vsCodeSetup')">Xem thêm</button>
-            </div>
-            <div class="section-content" id="vsCodeSetupContent">
-                <p><pre>Để cài đặt VS Code, bạn có thể tải xuống từ trang web chính thức và làm theo hướng dẫn cài đặt. Sau khi cài đặt, bạn có thể mở và chỉnh sửa các tệp HTML của mình dễ dàng.</pre></p>
-                <img src="./image/1_giới thiệu visual studio code.png" alt="VS Code Setup" class="section-image" >
-                <img src="./image/2_giới thiệu visual studio code.png" alt="VS Code Setup" class="section-image" >
-            </div>
-            <div class="section" id="basicHTML">
-                <h3 class="section-title">Cách tạo & cấu trúc cơ bản của một file HTML</h3>
-                <p>Một tệp HTML cơ bản bắt đầu với các thẻ HTML cơ bản như &lt;html&gt;, &lt;head&gt;, và &lt;body&gt;.</p>
-                
-                <button class="toggle-button" onclick="toggleSection('basicHTML')">Xem thêm</button>
-            </div>
-            <div class="section-content" id="basicHTMLContent">
-                <pre>
-                    <code>
-                        &lt;!DOCTYPE html&gt;
-                        &lt;html&gt;
-                            &lt;head&gt;
-                                &lt;title&gt;Document&lt;/title&gt;
-                            &lt;/head&gt;
-                            &lt;body&gt;
-                                &lt;h1&gt;Hello World&lt;/h1&gt;
-                            &lt;/body&gt;
-                        &lt;/html&gt;
-                    </code>
-                </pre>
-             <h3>Cấu trúc chung của html gồm có thẻ <!DOCTYPE html> dùng để xác định rằng code bạn đang dùng là html</h3>
+        .container {
+            display: flex;
+        }
 
-<p>Cặp thẻ đóng mở <html> </html> chứa toàn bộ các dòng lệnh html bên trong (sau này còn là code của Javascript và CSS khi chèn vào)
-Tiếp đến là 2 cặp thẻ <head></head> chứa thông tin của webpage và đặc trưng bởi thẻ <title></title>, mà mặc định sẽ không được hiển thị trên web
-Thẻ <body></body> chứa toàn bộ nội dung html sẽ hiển thị lên trên trang web của chúng ta.</p>
-            </div>
-           
-            <div class="section" id="conclusion">
-                <h3 class="section-title">Kết luận</h3>
-                <p>Đã học được cách tạo một trang HTML cơ bản và cách sử dụng VS Code để chỉnh sửa mã nguồn.</p>
-                
-                <button class="toggle-button" onclick="toggleSection('conclusion')">Xem thêm</button>
-            </div>
-            <div class="section-content" id="conclusionContent">
-                <p>Tiếp theo, hãy thử tạo một dự án nhỏ và áp dụng những gì bạn đã học được vào thực tế.</p>
-            </div>
-            <div class="section" id="discussion">
-                <h3 class="section-title">Thảo luận</h3>
-                <p>Hãy tham gia vào các diễn đàn và nhóm thảo luận để chia sẻ ý tưởng và giải đáp các thắc mắc về HTML.</p>
-                
-                <button class="toggle-button" onclick="toggleSection('discussion')">Xem thêm</button>
-            </div>
-            <div class="section-content" id="discussionContent">
-                <p>Các nhóm học tập trực tuyến như Stack Overflow và Reddit là những nơi tốt để đặt câu hỏi và trao đổi kiến thức với cộng đồng.</p>
-            </div>
+        .navbar {
+            background-color: #007BFF;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .navbar-hamburger {
+            display: none;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        .navbar-menu {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar-menu li {
+            cursor: pointer;
+            padding: 5px 10px;
+            transition: background-color 0.3s;
+        }
+
+        .navbar-menu li:hover {
+            background-color: #0056b3;
+            border-radius: 5px;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow-y: auto;
+            position: fixed;
+            height: 100vh;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu-item {
+            margin-bottom: 15px;
+        }
+
+        .menu-item div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.2em;
+            color: #007BFF;
+            cursor: pointer;
+            padding: 10px;
+            transition: background-color 0.3s;
+            border-radius: 8px;
+        }
+
+        .menu-item div:hover {
+            background-color: #f0f8ff;
+        }
+
+        .sub-menu {
+            list-style: none;
+            padding-left: 20px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .sub-menu li {
+            margin-bottom: 10px;
+            font-size: 1em;
+            color: #555;
+            cursor: pointer;
+        }
+
+        .sub-menu li:hover {
+            color: #007BFF;
+        }
+
+        .locked i {
+            color: rgb(10, 9, 9);
+        }
+
+        /* Main Content Styles */
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+            width: calc(100% - 270px);
+            transition: margin-left 0.3s ease-in-out;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .navbar-hamburger {
+                display: block;
+            }
+
+            .navbar-menu {
+                display: none;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background-color: #007BFF;
+                flex-direction: column;
+                width: 150px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+            }
+
+            .navbar-menu.active {
+                display: flex;
+            }
+
+            .sidebar {
+                width: 0;
+                transition: width 0.3s ease-in-out;
+            }
+
+            .sidebar.active {
+                width: 250px;
+            }
+
+            .content {
+                margin-left: 0;
+                width: 100%;
+            }
+        }
+
+        /* Additional Styles */
+        .login-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #cfd5c6;
+            color: white;
+        }
+
+        .login-page input {
+            padding: 10px;
+            font-size: 1em;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: none;
+            text-align: center;
+        }
+
+        .login-page button {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 8px;
+            background-color: #0056b3;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-page button:hover {
+            background-color: #003f7f;
+        }
+
+        .home-page h1 {
+            color: #333;
+            font-size: 3em;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+
+        .course-page h1 {
+            color: #333;
+            font-size: 2.5em;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .personal-page h1 {
+            color: #333;
+            font-size: 2.5em;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .schedule-container {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .schedule-table th, .schedule-table td {
+            border: 1px solid #e0e0e0;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.1em;
+        }
+        .schedule-table th {
+            background-color: #4CAF50;
+            color: #ffffff;
+            font-weight: 700;
+        }
+        .schedule-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .schedule-table tr:hover {
+            background-color: #f1f1f1;
+        }
+        .schedule-table td {
+            color: #555555;
+        }
+        .schedule-table td:not(:empty)::before {
+            content: '📚';
+            display: block;
+            font-size: 1.2em;
+        }
+        .video-container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        .video-container h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .video-wrapper {
+            position: relative;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            background: #000;
+            border-radius: 8px;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .description {
+            margin-top: 20px;
+            line-height: 1.6;
+            color: #555;
+        }
+        </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <i class="fas fa-graduation-cap"></i> EDU BACSIC
         </div>
-        `,
-    3: "Will be open on 08/28/2024, there will be a private class for you 24/24",
-    4: "Will be open on 08/28/2024, there will be a private class for you 24/24",
-    5: `<div class="course-content">
-                <h1>Checkpoint</h1>
-                <p>Now that you have learnt HTML and CSS, you should be able to build static webpages. I recommend you to build as many test projects at each yellow step of the roadmap as possible to solidify what you learn.</p>
-                <p>The practice that I used to follow when I was learning was this:</p>
-                <ul>
-                    <li>While you are watching a course or reading a book, make sure to code along with the instructor/author — pause the video at regular intervals and code what you are being taught.</li>
-                    <li>Search on YouTube and watch a few project-based tutorials on the topic that you are learning. Apart from coding along with the instructor:
-                        <ul>
-                            <li>Try to build the same project at least 2 to 3 times on your own without looking at the video. If you get stuck, refer to the section of the video where the instructor builds that part of the project.</li>
-                            <li>Build something else that is similar to the project that you just built. For example, if you just built a todo app, try to build a notes app or a reminder app.</li>
-                        </ul>
-                    </li>
-                </ul>
-                <h2>Project Ideas</h2>
-                <p>Now that you have learnt HTML and CSS, here are a few ideas for you to build:</p>
-                <ul>
-                    <li>Try to copy the design of a website that you like.</li>
-                    <li>Here is a simple blog design in figma that you can try to copy.</li>
-                    <li>Or try to rebuild the webpages of this website.</li>
-                    <li>Take some inspiration from personal portfolios of others and build your own personal portfolio.</li>
-                </ul>
-                <form id="checkPointForm">
-                    <!-- Câu hỏi và đáp án -->
-                    <!-- Các câu hỏi đã có thể được giữ nguyên từ ví dụ trước hoặc bạn có thể thay đổi -->
-                    <button type="submit">Submit</button>
-                </form>
-                <div id="result" class="result" style="display:none;"></div>
-            </div>`,
-    6: "New homework will be updated soon.",
-    7: "Will be open on 08/28/2024, there will be a private class for you 24/24",
-    8: "Will be open on 08/28/2024, there will be a private class for you 24/24",
-    9: "Will be open on 08/28/2024, there will be a private class for you 24/24",
-  },
-  2: {
-    1: "This is the content for Course 2, Lesson 1.",
-    2: "This is the content for Course 2, Lesson 2.",
-  },
-  3: {
-    1: "This is the content for Course 3, Lesson 1.",
-    2: "This is the content for Course 3, Lesson 2.",
-  },
-  4: {
-    1: "This is the content for Course 4, Lesson 1.",
-    2: "This is the content for Course 4, Lesson 2.",
-  },
-  5: {
-    1: "This is the content for Course 5, Lesson 1.",
-    2: "This is the content for Course 5, Lesson 2.",
-  },
-  6: {
-    1: "This is the content for Course 6, Lesson 1.",
-    2: "This is the content for Course 6, Lesson 2.",
-  },
-  7: {
-    1: `
-
-   <div class="video-container">
-        <h1>Learn-HTML Will be update soon</h1>
-        <div class="video-wrapper">
-            <!-- Replace 'my-video.mp4' with the filename of your video -->
-            <video controls>
-                <source src="../video/video.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+        <div class="navbar-hamburger" onclick="toggleNavMenu()">
+            <i class="fas fa-bars"></i>
         </div>
-        <div class="description">
-        <h1>Why Learn HTML?</h1>
-        <ul>
-            <li><strong>Build Websites:</strong> HTML is the foundation for creating and structuring web pages. It allows you to add text, images, links, and more.</li>
-            <li><strong>Understand Web Basics:</strong> Knowing HTML helps you grasp how websites are organized and displayed in browsers.</li>
-            <li><strong>Work with CSS and JavaScript:</strong> HTML integrates with CSS for styling and JavaScript for interactivity, making your web pages dynamic and visually appealing.</li>
-            <li><strong>Develop Technical Skills:</strong> Learning HTML is the first step towards becoming a web developer and understanding other web technologies.</li>
-            <li><strong>Create Personal Projects:</strong> With HTML, you can build your own blog, portfolio, or other web projects to showcase your work and ideas.</li>
+        <ul class="navbar-menu" id="navbarMenu">
+            <li onclick="showHomePage()"><i class="fas fa-home"></i> Home</li>
+            <li onclick="showAboutPage()"><i class="fas fa-info-circle"></i> About</li>
+            <li onclick="showContactPage()"><i class="fas fa-envelope"></i> Contact</li>
         </ul>
-        <p>This summary captures the essential reasons for learning HTML in a clear and brief manner.</p>
-    </div>
-        </div>
-    </div>
+    </nav>
 
-    <script>
-        function showHomePage() {
-            window.location.href = 'index.html'; // Replace with your home page link
-        }
+    <div class="container">
+        <aside class="sidebar" id="sidebar">
+            <ul class="sidebar-menu">
+                <li class="menu-item locked"> 
+                    <div onclick="toggleSubMenu(1)"><i class="fas fa-book"></i> Full Stack Developer <i class="fas fa-chevron-down"></i></div>
+                    <ul class="sub-menu" id="subMenu1">
+                        <li onclick="showCourseContent(1, 1)"><i class="fas fa-file-alt"></i> Theory</li>
+                        <li onclick="showCourseContent(1, 2)"><i class="fa-brands fa-html5"></i> HTML</li>
+                        <li onclick="showCourseContent(1, 3)"><i class="fa-brands fa-css3"></i> CSS</li>
+                        <li onclick="showCourseContent(1, 4)"><i class="fa-brands fa-js"></i> Javascript</li>
+                        <li onclick="showCourseContent(1, 5)"><i class="fa-solid fa-check"></i> Checkpoint - Static WebPages</li>
+                        <li onclick="showCourseContent(1,6)"><i class="fa-brands fa-cloudflare"></i> Homework</li>
+                        <li onclick="showCourseContent(1,7)"><i class="fa-brands fa-npm"></i> NPM</li>
+                        <li onclick="showCourseContent(1, 8)"><i class="fa-solid fa-check"></i> Checkpoint -Interactivity</li>
+                        <li onclick="showCourseContent(1,9)"><i class="fa-brands fa-git-alt"></i> GIT</li>
+                        <li onclick="showCourseContent(1,10)"><i class="fa-brands fa-github"></i> GITHUB</li>
+                        <li onclick="showCourseContent(1, 11)"><i class="fa-solid fa-check"></i> Checkpoint - Collaborative Work</li>
+                        <li onclick="showCourseContent(1,12)"><i class="fa-brands fa-react"></i> REACT</li>
+                        <li onclick="showCourseContent(1,13)"><i class="fa-brands fa-node"></i>NODE JS</li>
+                        <li onclick="showCourseContent(1, 14)"><i class="fa-solid fa-check"></i> Checkpoint - CLI APPS</li>
 
-        function showVideoPage() {
-            // Already on the video page
-        }
 
-        function showContactPage() {
-            window.location.href = 'contact.html'; // Replace with your contact page link
+                    </ul>
+                </li>
+                <li class="menu-item course-2 locked">
+                    <div onclick="toggleSubMenu(2)"><i class="fa-solid fa-lock"></i> AI and Data Scientist <i class="fas fa-chevron-down"></i></div>
+                    <ul class="sub-menu" id="subMenu2">
+                        <li onclick="showCourseContent(2, 1)"><i class="fa-solid fa-superscript"></i> Locked</li>
+                        <li onclick="showCourseContent(2, 2)"><i class="fa-solid fa-square-poll-vertical"></i> Locked</li>
+                        <li onclick="showCourseContent(2, 3)"><i class="fa-brands fa-asymmetrik"></i> Locked</li>
+                        <li onclick="showCourseContent(2, 4)"><i class="fa-brands fa-internet-explorer"></i> Locked</li>
+                        <li onclick="showCourseContent(2, 5)"><i class="fa-solid fa-laptop-code"></i> Locked</li>
+                        <li onclick="showCourseContent(2, 6)"><i class="fa-solid fa-pager"></i> Locked</li>
+                        <li onclick="showCourseContent(2, 7)"><i class="fa-solid fa-crown"></i></i> Locked</li>
+                        <li onclick="showCourseContent(2, 8)"><i class="fa-solid fa-terminal"></i> Locked</li>
+                        
+
+
+                    </ul>
+                </li>
+                <li class="menu-item course-3 locked">
+                    <div onclick="toggleSubMenu(3)"><i class="fa-solid fa-lock"></i> Software Architect <i class="fas fa-chevron-down"></i></div>
+                    <ul class="sub-menu" id="subMenu3">
+                        <li onclick="showCourseContent(3, 1)"><i class="fas fa-file-alt"></i> Locked</li>
+                        <li onclick="showCourseContent(3, 2)"><i class="fas fa-file-alt"></i> Locked</li>
+                    </ul>
+                </li>
+                <li class="menu-item course-4 locked">
+                    <div onclick="toggleSubMenu(4)"><i class="fa-solid fa-lock"></i> <b>HW</b>FULLSTACK <i class="fas fa-chevron-down"></i></div>
+                    <ul class="sub-menu" id="subMenu4">
+                        <li onclick="showCourseContent(4, 1)"><i class="fa-brands fa-html5"></i> HTML-HomeWork <i class="fa-solid fa-briefcase"></i></li>
+                        <li onclick="showCourseContent(4, 2)"><i class="fa-brands fa-css3"></i> CSS -HomeWork <i class="fa-solid fa-briefcase"></i></li>
+                        <li onclick="showCourseContent(4, 3)"><i class="fa-brands fa-js"></i> Javascript -HomeWork <i class="fa-solid fa-briefcase"></i></li>
+                        <li onclick="showCourseContent(4, 4)"><i class="fa-brands fa-npm"></i> NPM -HomeWork <i class="fa-solid fa-briefcase"></i></li>
+                        <li onclick="showCourseContent(4, 5)"><i class="fa-brands fa-git-alt"></i> GIT -HomeWork <i class="fa-solid fa-briefcase"></i></li>
+                        <li onclick="showCourseContent(4, 6)"><i class="fa-brands fa-github"></i> GITHUB -HomeWork <i class="fa-solid fa-briefcase"></i></li>
+                        <li onclick="showCourseContent(4, 7)"><i class="fa-brands fa-react"></i> REACT -HomeWork <i class="fa-solid fa-briefcase"></i></li>
+                        <li onclick="showCourseContent(4, 8)"><i class="fa-brands fa-node"></i>NODE JS -HomeWork <i class="fa-solid fa-briefcase"></i></li>
+                    </ul>
+                </li>
+                <li class="menu-item course-5 locked">
+                    <div onclick="toggleSubMenu(5)"><i class="fa-solid fa-lock"></i> <b>HW</b>AI & DATA <i class="fas fa-chevron-down"></i></div>
+                    <ul class="sub-menu" id="subMenu5">
+                        <li onclick="showCourseContent(5, 1)"><i class="fa-solid fa-superscript"></i> Locked</li>
+                        <li onclick="showCourseContent(5, 2)"><i class="fa-solid fa-square-poll-vertical"></i> Locked</li>
+                        <li onclick="showCourseContent(5, 3)"><i class="fa-brands fa-asymmetrik"></i> Locked</li>
+                        <li onclick="showCourseContent(5, 4)"><i class="fa-brands fa-internet-explorer"></i> Locked</li>
+                        <li onclick="showCourseContent(5, 5)"><i class="fa-solid fa-laptop-code"></i> Locked</li>
+                        <li onclick="showCourseContent(5, 6)"><i class="fa-solid fa-pager"></i> Locked</li>
+                        <li onclick="showCourseContent(5, 7)"><i class="fa-solid fa-crown"></i></i> Locked</li>
+                        <li onclick="showCourseContent(5, 8)"><i class="fa-solid fa-terminal"></i> Locked</li>
+                    </ul>
+                </li>
+                <li class="menu-item course-6 locked">
+                    <div onclick="toggleSubMenu(6)"><i class="fa-solid fa-lock"></i> <b>HW</b>Software Architect <i class="fas fa-chevron-down"></i></div>
+                    <ul class="sub-menu" id="subMenu6">
+                        <li onclick="showCourseContent(6, 1)"><i class="fas fa-file-alt"></i> Locked</li>
+                        <li onclick="showCourseContent(6, 2)"><i class="fas fa-file-alt"></i> Locked</li>
+                    </ul>
+                </li>
+                <li class="menu-item course-7 locked">
+                    <div onclick="toggleSubMenu(7)"><i class="fa-brands fa-youtube"></i> FULLSTACK <i class="fas fa-chevron-down"></i></div>
+                    <ul class="sub-menu" id="subMenu7">
+                        <li onclick="showCourseContent(7, 1)"><i class="fa-brands fa-html5"></i> HTML-Learn <i class="fa-brands fa-youtube"></i></li>
+                        <li onclick="showCourseContent(7, 2)"><i class="fa-brands fa-css3"></i> CSS -Learn <i class="fa-brands fa-youtube"></i></li>
+                        <li onclick="showCourseContent(7, 3)"><i class="fa-brands fa-js"></i> Javascript -Learn <i class="fa-brands fa-youtube"></i></li>
+                        <li onclick="showCourseContent(7, 4)"><i class="fa-brands fa-npm"></i> NPM -Learn <i class="fa-brands fa-youtube"></i></li>
+                        <li onclick="showCourseContent(7, 5)"><i class="fa-brands fa-git-alt"></i> GIT -Learn <i class="fa-brands fa-youtube"></i></li>
+                        <li onclick="showCourseContent(7, 6)"><i class="fa-brands fa-github"></i> GITHUB -Learn <i class="fa-brands fa-youtube"></i></li>
+                        <li onclick="showCourseContent(7, 7)"><i class="fa-brands fa-react"></i> REACT -Learn <i class="fa-brands fa-youtube"></i></li>
+                        <li onclick="showCourseContent(7, 8)"><i class="fa-brands fa-node"></i>NODE JS -Learn <i class="fa-brands fa-youtube"></i></li>
+                    </ul>
+                </li>
+                <li class="menu-item course-8 locked">
+                    <div onclick="toggleSubMenu(8)"><i class="fa-solid fa-wrench"></i> Update soon.... <i class="fas fa-chevron-down"></i></div>
+                    <ul class="sub-menu" id="subMenu8">
+                        <li onclick="showCourseContent(8, 1)"><i class="fa-solid fa-unlock"></i> Unlocked ?</li>
+                        <li onclick="showCourseContent(8, 2)"><i class="fa-solid fa-unlock"></i> Unlocked ?</li>
+                    </ul>
+                </li>
+                <li onclick="showPersonalInfo()"><i class="fas fa-user"></i> Personal Info</li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <section id="loginPage" class="login-page">
+                <h1>Welcome to EDU BASIC</h1>
+                <input type="password" id="keyInput" placeholder="Enter your key">
+                <button onclick="handleLogin()">Login</button>
+            </section>
+
+            <section id="homePage" class="home-page" style="display:none;">
+                <h1>Welcome to EDU BASIC</h1>
+                <h2>Navigate through the courses using the menu.</h2>
+            </section>
+
+            <div class="course-page" id="coursePage" style="display:none;">
+                <h1>Course Content</h1>
+                <div id="courseContent"></div>
+            </div>
+
+            <div class="personal-page" id="personalPage" style="display:none;">
+                <h1>Vy's Profile</h1>
+                <div id="personalInfoDisplay">
+                    <p><i class="fa-solid fa-user"></i> Name: <span id="userName"></span></p>
+                    <p><i class="fa-solid fa-address-card"></i> Address: <span id="userAddress"></span></p>
+                    <p><i class="fa-solid fa-phone"></i> Phone Number: <span id="userPhoneNumber"></span></p>
+                    <p><i class="fa-solid fa-envelope"></i> Email: <span id="userEmail"></span></p>
+                    <p><i class="fa-brands fa-discourse"></i> Course: <span id="userCourse"></span></p>
+                    <p><i class="fa-brands fa-cc-apple-pay"></i> Payment: <b><font color="green">Success</font></b> <i class="fa-solid fa-check"></i> </p>
+                    <p><i class="fa-solid fa-dollar-sign"></i> Method: (338.51 United States Dollar, with 1 United States Dollar equals
+                            25,110.00 Vietnamese dong) </p>
+                    <p id="userIp">IP Address: </p>
+                    <p id="userRegion">Region: </p>
+                    <p><i class="fa-solid fa-language"></i> Selected language:VietNam</p>
+                    <p><i class="fa-solid fa-certificate"></i> Certificate: No </p>
+                    <p><i class="fa-solid fa-file-signature"></i>Your learning path will end in <b><font color="red">December 2025</font></b>. While studying, we will send international tests to issue certificates!</p>
+                    <img id="userFlag" src="" alt="Country Flag" style="width: 64px; height: auto;">
+                    <div class="schedule-container">
+                        <h1>Study Online Schedule IN 28TH</h1>
+                        <table class="schedule-table">
+                            <thead>
+                                <tr>
+                                    <th>Day</th>
+                                    <th>Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Monday</td>
+                                    <td>7:00 PM</td>
+                                </tr>
+                                <tr>
+                                    <td>Tuesday</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Wednesday</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Thursday</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Friday</td>
+                                    <td>8:00 PM</td>
+                                </tr>
+                                <tr>
+                                    <td>Saturday</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Sunday</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+    <script src="script.js"></script>
+    <script> 
+        function toggleSection(sectionId) {
+    const sectionContent = document.getElementById(`${sectionId}Content`);
+    if (sectionContent) {
+        if (sectionContent.style.display === 'block') {
+            sectionContent.style.display = 'none';
+        } else {
+            sectionContent.style.display = 'block';
         }
+    } else {
+        console.error(`Element with ID ${sectionId}Content not found.`);
+    }
+}
+
     </script>
 
-    `,
-    2: `
-
-    <div class="video-container">
-         <h1>Learn-CSS Will be update soon</h1>
-         <div class="video-wrapper">
-             <!-- Replace 'my-video.mp4' with the filename of your video -->
-             <video controls>
-                 <source src="../video/video.mp4" type="video/mp4">
-                 Your browser does not support the video tag.
-             </video>
-         </div>
-         <div class="description">
-       <h1>Why Learn CSS?</h1>
-        <ul>
-            <li><strong>Enhance Visual Design:</strong> CSS (Cascading Style Sheets) allows you to apply styles such as colors, fonts, and layouts to your HTML elements, making your web pages visually appealing.</li>
-            <li><strong>Improve User Experience:</strong> By using CSS, you can create responsive designs that adjust to different screen sizes and devices, improving the user experience across various platforms.</li>
-            <li><strong>Separate Content from Design:</strong> CSS separates the content (HTML) from the design, making it easier to manage and update the look of your website without altering the content.</li>
-            <li><strong>Enhance Accessibility:</strong> CSS enables you to design accessible websites by using styles that enhance readability and usability for users with disabilities.</li>
-            <li><strong>Efficient Design Management:</strong> With CSS, you can use stylesheets to manage the design of multiple pages in a single place, ensuring consistency and reducing redundancy.</li>
-        </ul>
-        <p>This summary highlights the key benefits of learning CSS for creating attractive, functional, and efficient web designs.</p>
-     </div>
-         </div>
-     </div>
- 
-     <script>
-         function showHomePage() {
-             window.location.href = 'index.html'; // Replace with your home page link
-         }
- 
-         function showVideoPage() {
-             // Already on the video page
-         }
- 
-         function showContactPage() {
-             window.location.href = 'contact.html'; // Replace with your contact page link
-         }
-     </script>
- 
-     `,
-  },
-};
-
-const lockedCourses = [1, 2, 3, 4, 5, 6];
-
-function showCourseContent(courseNumber, lessonNumber) {
-  // Kiểm tra nếu khóa học bị khóa
-  if (lockedCourses.includes(courseNumber)) {
-    showUpdateSoonMessage();
-    return;
-  }
-
-  const content =
-    courseContentData[courseNumber]?.[lessonNumber] ||
-    "Will be update soon.";
-
-  document.getElementById(
-    "courseContent"
-  ).innerHTML = `<h1>Course ${courseNumber}: Lesson ${lessonNumber}</h1>${content}`;
-
-  document.getElementById("coursePage").style.display = "block";
-  document.getElementById("personalPage").style.display = "none";
-  document.getElementById("homePage").style.display = "none";
-  document
-    .querySelectorAll(".sidebar-menu .sub-menu li")
-    .forEach((item) => item.classList.remove("active"));
-  document
-    .querySelector(`#subMenu${courseNumber} li:nth-child(${lessonNumber})`)
-    .classList.add("active");
-}
-
-function showUpdateSoonMessage() {
-  const updateSoonMessage = document.createElement("div");
-  updateSoonMessage.className = "update-soon-message";
-  updateSoonMessage.innerHTML = `
-        <div class="update-soon-overlay"></div>
-        <div class="update-soon-content">
-            <h2>Course Update Soon</h2>
-            <p>This course will be updated soon. Please check back later.</p>
-            <p>Expected on <b>08/20/2024</b> or maybe earlier</p>
-            <button onclick="closeUpdateSoonMessage()">Close</button>
-        </div>
-    `;
-  document.body.appendChild(updateSoonMessage);
-}
-
-function closeUpdateSoonMessage() {
-  const updateSoonMessage = document.querySelector(".update-soon-message");
-  if (updateSoonMessage) {
-    updateSoonMessage.remove();
-  }
-}
-
-function showPersonalInfo() {
-  const user = JSON.parse(localStorage.getItem("user"));
-  if (user) {
-    document.getElementById("userName").textContent = user.name;
-    document.getElementById("userAddress").textContent = user.address;
-    document.getElementById("userPhoneNumber").textContent = user.phoneNumber;
-    document.getElementById("userEmail").textContent = user.email;
-    document.getElementById("userCourse").textContent = user.course;
-
-    fetch("https://ipinfo.io/json?token=f1b51520c36a41")
-      .then((response) => response.json())
-      .then((data) => {
-        document.getElementById(
-          "userIp"
-        ).textContent = `IP Address: ${data.ip}`;
-        document.getElementById(
-          "userRegion"
-        ).textContent = `Region: ${data.region} (${data.country})`;
-        document.getElementById(
-          "userFlag"
-        ).src = `https://flagcdn.com/w80/${data.country.toLowerCase()}.png`;
-      })
-      .catch((error) => {
-        console.error("Error fetching IP info:", error);
-        document.getElementById("userIp").textContent =
-          "IP Address: Unable to fetch";
-        document.getElementById("userRegion").textContent =
-          "Region: Unable to fetch";
-        document.getElementById("userFlag").src = "";
-      });
-
-    document.getElementById("personalPage").style.display = "block";
-    document.getElementById("coursePage").style.display = "none";
-    document.getElementById("homePage").style.display = "none";
-  } else {
-    alert("User not logged in");
-  }
-}
-
-function toggleNavMenu() {
-  const navMenu = document.getElementById("navbarMenu");
-  navMenu.classList.toggle("active");
-}
-
-document.addEventListener("click", (event) => {
-  const isClickInside = document
-    .querySelector(".navbar")
-    .contains(event.target);
-  if (!isClickInside) {
-    const navMenu = document.getElementById("navbarMenu");
-    navMenu.classList.remove("active");
-  }
-});
-
-function showCheckPoint() {
-  document
-    .querySelectorAll(".home-page, .course-page, .personal-page")
-    .forEach((page) => {
-      page.style.display = "none";
-    });
-  document.getElementById("checkPointPage").style.display = "block";
-}
-
-document
-  .getElementById("checkPointForm")
-  .addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const answers = {
-      q1: document.querySelector('input[name="q1"]:checked')?.value,
-      q2: document.querySelector('input[name="q2"]:checked')?.value,
-      q3: document.querySelector('input[name="q3"]:checked')?.value,
-      q4: document.querySelector('input[name="q4"]:checked')?.value,
-      q5: document.querySelector('input[name="q5"]:checked')?.value,
-    };
-
-    const correctAnswers = {
-      q1: "a",
-      q2: "a",
-      q3: "b",
-      q4: "b",
-      q5: "a",
-    };
-
-    let score = 0;
-    for (const [question, answer] of Object.entries(answers)) {
-      if (answer === correctAnswers[question]) {
-        score++;
-      }
-    }
-
-    const totalQuestions = Object.keys(correctAnswers).length;
-    const percentage = (score / totalQuestions) * 100;
-
-    localStorage.setItem("checkPointSubmitted", percentage.toFixed(2));
-    document.getElementById("checkPointForm").style.display = "none";
-    document.getElementById("result").style.display = "block";
-    document.getElementById(
-      "result"
-    ).innerHTML = `You have completed the checkpoint with a score of ${percentage.toFixed(
-      2
-    )}%.`;
-  });
-
-function showLockMessage() {
-  const lockMessage = document.createElement("div");
-  lockMessage.className = "lock-message";
-  lockMessage.innerHTML = `
-        <div class="lock-overlay"></div>
-        <div class="lock-content">
-            <h2>Khóa học chưa được mở</h2>
-            <p>Bạn cần liên hệ với quản trị viên để mở khóa khóa học này.</p>
-            <button onclick="closeLockMessage()">Đóng</button>
-        </div>
-    `;
-  document.body.appendChild(lockMessage);
-}
-
-function closeLockMessage() {
-  const lockMessage = document.querySelector(".lock-message");
-  if (lockMessage) {
-    lockMessage.remove();
-  }
-}
-
-function handleLogin() {
-  const key = document.getElementById("keyInput").value;
-  if (key === "ztehtkv2007") {
-    const user = {
-      name: "Huỳnh Trương Khánh Vy",
-      address: "50 bedford, west croydon 5008",
-      phoneNumber: "0421582472",
-      email: "huynhtruongkhanhvy1007@gmail.com",
-      course: "Fullstack, AI and Data Scientist, and Software Architect",
-    };
-
-    localStorage.setItem("user", JSON.stringify(user));
-
-    document.getElementById("loginPage").style.display = "none";
-    document.getElementById("homePage").style.display = "block";
-    document.getElementById("sidebar").style.display = "block";
-    document.getElementById("navbarMenu").style.display = "none";
-    updatePersonalInfo();
-  } else {
-    alert("Invalid key");
-  }
-}
-
-function toggleSubMenu(menuNumber) {
-  const subMenu = document.getElementById(`subMenu${menuNumber}`);
-  const isVisible = subMenu.style.display === "block";
-  document
-    .querySelectorAll(".sub-menu")
-    .forEach((menu) => (menu.style.display = "none"));
-  document
-    .querySelectorAll(".menu-item")
-    .forEach((item) => item.classList.remove("active"));
-  if (!isVisible) {
-    subMenu.style.display = "block";
-    document
-      .querySelectorAll(".menu-item")
-      [menuNumber - 1].classList.add("active");
-  }
-}
-
-// Thêm sự kiện cho các mục menu bị khóa
-document.querySelectorAll(".menu-item.locked").forEach((item) => {
-  item.addEventListener("click", showLockMessage);
-});
+</body>
+</html>
