@@ -259,7 +259,7 @@ function showUpdateSoonMessage() {
         <div class="update-soon-content">
             <h2>Course Update Soon</h2>
             <p>This course will be updated soon. Please check back later.</p>
-            <p>Expected on 08/20/2024 or maybe earlier</p>
+            <p>Expected on <b>08/20/2024</b> or maybe earlier</p>
             <button onclick="closeUpdateSoonMessage()">Close</button>
         </div>
     `;
