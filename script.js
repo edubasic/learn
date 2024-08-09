@@ -127,9 +127,103 @@ Thẻ <body></body> chứa toàn bộ nội dung html sẽ hiển thị lên tr�
     1: "This is the content for Course 3, Lesson 1.",
     2: "This is the content for Course 3, Lesson 2.",
   },
+  4: {
+    1: "This is the content for Course 4, Lesson 1.",
+    2: "This is the content for Course 4, Lesson 2.",
+  },
+  5: {
+    1: "This is the content for Course 5, Lesson 1.",
+    2: "This is the content for Course 5, Lesson 2.",
+  },
+  6: {
+    1: "This is the content for Course 6, Lesson 1.",
+    2: "This is the content for Course 6, Lesson 2.",
+  },
+  7: {
+    1: `
+
+   <div class="video-container">
+        <h1>Learn-HTML Will be update soon</h1>
+        <div class="video-wrapper">
+            <!-- Replace 'my-video.mp4' with the filename of your video -->
+            <video controls>
+                <source src="../video/video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="description">
+        <h1>Why Learn HTML?</h1>
+        <ul>
+            <li><strong>Build Websites:</strong> HTML is the foundation for creating and structuring web pages. It allows you to add text, images, links, and more.</li>
+            <li><strong>Understand Web Basics:</strong> Knowing HTML helps you grasp how websites are organized and displayed in browsers.</li>
+            <li><strong>Work with CSS and JavaScript:</strong> HTML integrates with CSS for styling and JavaScript for interactivity, making your web pages dynamic and visually appealing.</li>
+            <li><strong>Develop Technical Skills:</strong> Learning HTML is the first step towards becoming a web developer and understanding other web technologies.</li>
+            <li><strong>Create Personal Projects:</strong> With HTML, you can build your own blog, portfolio, or other web projects to showcase your work and ideas.</li>
+        </ul>
+        <p>This summary captures the essential reasons for learning HTML in a clear and brief manner.</p>
+    </div>
+        </div>
+    </div>
+
+    <script>
+        function showHomePage() {
+            window.location.href = 'index.html'; // Replace with your home page link
+        }
+
+        function showVideoPage() {
+            // Already on the video page
+        }
+
+        function showContactPage() {
+            window.location.href = 'contact.html'; // Replace with your contact page link
+        }
+    </script>
+
+    `,
+    2: `
+
+    <div class="video-container">
+         <h1>Learn-CSS Will be update soon</h1>
+         <div class="video-wrapper">
+             <!-- Replace 'my-video.mp4' with the filename of your video -->
+             <video controls>
+                 <source src="../video/video.mp4" type="video/mp4">
+                 Your browser does not support the video tag.
+             </video>
+         </div>
+         <div class="description">
+       <h1>Why Learn CSS?</h1>
+        <ul>
+            <li><strong>Enhance Visual Design:</strong> CSS (Cascading Style Sheets) allows you to apply styles such as colors, fonts, and layouts to your HTML elements, making your web pages visually appealing.</li>
+            <li><strong>Improve User Experience:</strong> By using CSS, you can create responsive designs that adjust to different screen sizes and devices, improving the user experience across various platforms.</li>
+            <li><strong>Separate Content from Design:</strong> CSS separates the content (HTML) from the design, making it easier to manage and update the look of your website without altering the content.</li>
+            <li><strong>Enhance Accessibility:</strong> CSS enables you to design accessible websites by using styles that enhance readability and usability for users with disabilities.</li>
+            <li><strong>Efficient Design Management:</strong> With CSS, you can use stylesheets to manage the design of multiple pages in a single place, ensuring consistency and reducing redundancy.</li>
+        </ul>
+        <p>This summary highlights the key benefits of learning CSS for creating attractive, functional, and efficient web designs.</p>
+     </div>
+         </div>
+     </div>
+ 
+     <script>
+         function showHomePage() {
+             window.location.href = 'index.html'; // Replace with your home page link
+         }
+ 
+         function showVideoPage() {
+             // Already on the video page
+         }
+ 
+         function showContactPage() {
+             window.location.href = 'contact.html'; // Replace with your contact page link
+         }
+     </script>
+ 
+     `,
+  },
 };
 
-const lockedCourses = [1, 2, 3];
+const lockedCourses = [1, 2, 3, 4, 5, 6];
 
 function showCourseContent(courseNumber, lessonNumber) {
   // Kiểm tra nếu khóa học bị khóa
@@ -140,7 +234,7 @@ function showCourseContent(courseNumber, lessonNumber) {
 
   const content =
     courseContentData[courseNumber]?.[lessonNumber] ||
-    "No content available for this lesson.";
+    "Will be update soon.";
 
   document.getElementById(
     "courseContent"
