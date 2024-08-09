@@ -8,67 +8,231 @@
     <link rel='shortcut icon' href='./image/icon.ico' />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        .course-content {
-            padding: 20px;
-            max-width: 800px;
-            margin: auto;
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
         }
-        .title {
-            text-align: center;
+        
+        a {
+            text-decoration: none;
         }
-        .section {
-            margin-top: 20px;
+
+        .container {
+            display: flex;
         }
-        .section-title {
-            font-size: 1.5em;
-            cursor: pointer;
-            color: #007BFF;
-        }
-        .section-content {
-            display: none;
-            margin-top: 10px;
-        }
-        .section-image {
-            width: 50%;
-            height: auto;
-            display: block;
-            margin-top: 10px;
-        }
-        .toggle-button {
-            margin-top: 10px;
-            padding: 10px 20px;
+
+        .navbar {
             background-color: #007BFF;
             color: white;
-            border: none;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .navbar-hamburger {
+            display: none;
+            font-size: 1.5em;
             cursor: pointer;
         }
-        .toggle-button:hover {
+
+        .navbar-menu {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar-menu li {
+            cursor: pointer;
+            padding: 5px 10px;
+            transition: background-color 0.3s;
+        }
+
+        .navbar-menu li:hover {
             background-color: #0056b3;
-        }
-        pre {
-            background-color: #f8f9fa;
-            padding: 10px;
             border-radius: 5px;
-            overflow-x: auto;
         }
-        code {
-            font-family: monospace;
-        }
-        .schedule-container {
-            width: 70%;
-            margin: 30px auto;
-            padding: 20px;
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
             background-color: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow-y: auto;
+            position: fixed;
+            height: 100vh;
         }
-        h1 {
-            text-align: center;
-            color: #333333;
-            font-size: 2.5em;
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu-item {
+            margin-bottom: 15px;
+        }
+
+        .menu-item div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.2em;
+            color: #007BFF;
+            cursor: pointer;
+            padding: 10px;
+            transition: background-color 0.3s;
+            border-radius: 8px;
+        }
+
+        .menu-item div:hover {
+            background-color: #f0f8ff;
+        }
+
+        .sub-menu {
+            list-style: none;
+            padding-left: 20px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .sub-menu li {
+            margin-bottom: 10px;
+            font-size: 1em;
+            color: #555;
+            cursor: pointer;
+        }
+
+        .sub-menu li:hover {
+            color: #007BFF;
+        }
+
+        .locked i {
+            color: rgb(10, 9, 9);
+        }
+
+        /* Main Content Styles */
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+            width: calc(100% - 270px);
+            transition: margin-left 0.3s ease-in-out;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .navbar-hamburger {
+                display: block;
+            }
+
+            .navbar-menu {
+                display: none;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background-color: #007BFF;
+                flex-direction: column;
+                width: 150px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+            }
+
+            .navbar-menu.active {
+                display: flex;
+            }
+
+            .sidebar {
+                width: 0;
+                transition: width 0.3s ease-in-out;
+            }
+
+            .sidebar.active {
+                width: 250px;
+            }
+
+            .content {
+                margin-left: 0;
+                width: 100%;
+            }
+        }
+
+        /* Additional Styles */
+        .login-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .login-page input {
+            padding: 10px;
+            font-size: 1em;
             margin-bottom: 20px;
-            font-weight: 600;
+            border-radius: 8px;
+            border: none;
         }
+
+        .login-page button {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 8px;
+            background-color: #0056b3;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-page button:hover {
+            background-color: #003f7f;
+        }
+
+        .home-page h1 {
+            color: #333;
+            font-size: 3em;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+
+        .course-page h1 {
+            color: #333;
+            font-size: 2.5em;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .personal-page h1 {
+            color: #333;
+            font-size: 2.5em;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .schedule-container {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+        }
+
         .schedule-table {
             width: 100%;
             border-collapse: collapse;
@@ -131,7 +295,7 @@
             line-height: 1.6;
             color: #555;
         }
-    </style>
+        </style>
 </head>
 <body>
     <nav class="navbar">
@@ -151,7 +315,7 @@
     <div class="container">
         <aside class="sidebar" id="sidebar">
             <ul class="sidebar-menu">
-                <li class="menu-item">
+                <li class="menu-item locked"> 
                     <div onclick="toggleSubMenu(1)"><i class="fas fa-book"></i> Full Stack Developer <i class="fas fa-chevron-down"></i></div>
                     <ul class="sub-menu" id="subMenu1">
                         <li onclick="showCourseContent(1, 1)"><i class="fas fa-file-alt"></i> Theory</li>
@@ -253,15 +417,16 @@
         </aside>
 
         <main class="content">
-            <div class="login-page" id="loginPage">
-                <input type="text" id="keyInput" placeholder="Enter your key">
+            <section id="loginPage" class="login-page">
+                <h1>Welcome to EDU BASIC</h1>
+                <input type="password" id="keyInput" placeholder="Enter your key">
                 <button onclick="handleLogin()">Login</button>
-            </div>
+            </section>
 
-            <div class="home-page" id="homePage" style="display:none;">
-                <h1>Welcome to the Online Learning EDU BASIC</h1>
-                <h2 id="personalInfoDisplay">Hi there, welcome to your lesson. It will be start in <span>08/28/2024</span></h2>
-            </div>
+            <section id="homePage" class="home-page" style="display:none;">
+                <h1>Welcome to EDU BASIC</h1>
+                <h2>Navigate through the courses using the menu.</h2>
+            </section>
 
             <div class="course-page" id="coursePage" style="display:none;">
                 <h1>Course Content</h1>
@@ -341,6 +506,8 @@
         console.error(`Element with ID ${sectionId}Content not found.`);
     }
 }
+
     </script>
+
 </body>
 </html>
