@@ -208,6 +208,14 @@
             margin-top: 50px;
             margin-bottom: 20px;
         }
+        .home-page p {
+            color: #333;
+            font-size: 2em;
+            /* font-weight: bold; */
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
 
         .course-page h1 {
             color: #333;
@@ -426,7 +434,7 @@
 
             <section id="homePage" class="home-page" style="display:none;">
                 <h1>Welcome to EDU BASIC</h1>
-                <h2>Navigate through the courses using the menu.</h2>
+                <p>Hi there, your lesson will be update soon.</p>
             </section>
 
             <div class="course-page" id="coursePage" style="display:none;">
