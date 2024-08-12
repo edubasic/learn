@@ -221,9 +221,13 @@ Thẻ <body></body> chứa toàn bộ nội dung html sẽ hiển thị lên tr�
  
      `,
   },
+  8: {
+    1: "This is the content for Course 8, Lesson 1.",
+    2: "This is the content for Course 8, Lesson 2.",
+  },
 };
 
-const lockedCourses = [1, 2, 3, 4 , 5, 6];
+const lockedCourses = [1, 2, 3, 4 , 5, 6, 7, 8];
 
 function showCourseContent(courseNumber, lessonNumber) {
   // Kiểm tra nếu khóa học bị khóa
@@ -406,7 +410,7 @@ function handleLogin() {
       address: "50 bedford, west croydon 5008",
       phoneNumber: "0421582472",
       email: "huynhtruongkhanhvy1007@gmail.com",
-      course: "Fullstack, AI and Data Scientist, and Software Architect",
+      course: "Fullstack, AI and Data Scientist, Software Architect, and GAME DEV",
     };
 
     localStorage.setItem("user", JSON.stringify(user));
