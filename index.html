@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel='shortcut icon' href='./image/icon.ico' />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* General Styles */
         body {
@@ -32,6 +33,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
 
         .navbar-logo {
@@ -43,6 +45,7 @@
             display: none;
             font-size: 1.5em;
             cursor: pointer;
+            left : 100px;
         }
 
         .navbar-menu {
@@ -71,6 +74,8 @@
             overflow-y: auto;
             position: fixed;
             height: 100vh;
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(0);
         }
 
         .sidebar-menu {
@@ -151,17 +156,31 @@
             }
 
             .sidebar {
-                width: 0;
-                transition: width 0.3s ease-in-out;
+                transform: translateX(-100%);
             }
 
             .sidebar.active {
-                width: 250px;
+                transform: translateX(0);
             }
 
             .content {
                 margin-left: 0;
                 width: 100%;
+            }
+
+            /* Add a button to toggle the sidebar */
+            .sidebar-toggle-btn {
+                display: block;
+                position: fixed;
+                top: 70px;
+                left: 15px;
+                font-size: 1.5em;
+                cursor: pointer;
+                z-index: 1000;
+                background-color: #007BFF;
+                color: white;
+                padding: 10px;
+                border-radius: 50%;
             }
         }
 
@@ -211,7 +230,6 @@
         .home-page p {
             color: #333;
             font-size: 2em;
-            /* font-weight: bold; */
             text-align: center;
             margin-top: 50px;
             margin-bottom: 20px;
@@ -304,25 +322,24 @@
             line-height: 1.6;
             color: #555;
         }
-        </style>
+    </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar-logo">
-            <i class="fas fa-graduation-cap"></i> EDU BACSIC
-        </div>
-        <div class="navbar-hamburger" onclick="toggleNavMenu()">
-            <i class="fas fa-bars"></i>
-        </div>
-        <ul class="navbar-menu" id="navbarMenu">
-            <li onclick="showHomePage()"><i class="fas fa-home"></i> Home</li>
-            <li onclick="showAboutPage()"><i class="fas fa-info-circle"></i> About</li>
-            <li onclick="showContactPage()"><i class="fas fa-envelope"></i> Contact</li>
+    <div class="navbar">
+        <div class="navbar-logo">EDU BASIC</div>
+        <i class="fas fa-bars navbar-hamburger" id="navbar-hamburger"></i>
+        <ul class="navbar-menu" id="navbar-menu">
+            <!-- <li href="index.html">Home</li>
+            <li>Courses</li>
+            <li>About</li>
+            <li>Contact</li> -->
         </ul>
-    </nav>
+    </div>
 
     <div class="container">
+        <i class="fas fa-bars sidebar-toggle-btn" id="sidebar-toggle-btn"></i>
         <aside class="sidebar" id="sidebar">
+            
             <ul class="sidebar-menu">
                 <li class="menu-item locked"> 
                     <div onclick="toggleSubMenu(1)"><i class="fas fa-book"></i> Full Stack Developer <i class="fas fa-chevron-down"></i></div>
@@ -446,6 +463,7 @@
             <section id="homePage" class="home-page" style="display:none;">
                 <h1>Welcome to EDU BASIC</h1>
                 <p>Hi there, your lesson will be update soon.</p>
+                <p style="color: red;">Now, you can use on your mobile !</p>
             </section>
 
             <div class="course-page" id="coursePage" style="display:none;">
@@ -510,8 +528,9 @@
                                 </tr>
                             </tbody>
                         </table>
+                        
                     </div>
-
+<!-- Toggle Sidebar Button (visible on mobile) -->
     <script src="script.js"></script>
     <script> 
         function toggleSection(sectionId) {
@@ -526,7 +545,13 @@
         console.error(`Element with ID ${sectionId}Content not found.`);
     }
 }
+document.getElementById('navbar-hamburger').addEventListener('click', function() {
+            document.getElementById('navbar-menu').classList.toggle('active');
+        });
 
+        document.getElementById('sidebar-toggle-btn').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('active');
+        });
     </script>
 
 </body>
