@@ -227,7 +227,7 @@ Thẻ <body></body> chứa toàn bộ nội dung html sẽ hiển thị lên tr�
   },
 };
 
-const lockedCourses = [];
+const lockedCourses = [1,2,3,4,5,6,7,8];
 
 function showCourseContent(courseNumber, lessonNumber) {
   // Kiểm tra nếu khóa học bị khóa
