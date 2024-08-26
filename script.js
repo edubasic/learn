@@ -23,8 +23,13 @@ const courseContentData = {
                 <h2 class="title">Full Stack Developer</h2>
                 <p class="subtitle">Step by step guide to becoming a modern full stack developer in 2024</p>
             </div>`,
+<<<<<<< HEAD
     2: `
                     <div class="section-content" id="introHTMLContent">
+=======
+    2: `<div class="lesson__content">
+            <div class="section-content" id="introHTMLContent">
+>>>>>>> 09fd559 (add new all)
                 <p>HTML cung cấp cấu trúc cơ bản cho một trang web bằng cách sử dụng các thẻ như &lt;div&gt;, &lt;span&gt;, &lt;h1&gt;, và nhiều thẻ khác.</p>
             </div>
             <div class="section" id="vsCodeSetup">
@@ -33,7 +38,11 @@ const courseContentData = {
                 <button class="toggle-button" onclick="toggleSection('vsCodeSetup')">Xem thêm</button>
             </div>
             <div class="section-content" id="vsCodeSetupContent">
+<<<<<<< HEAD
                 <p><pre>Để cài đặt VS Code, bạn có thể tải xuống từ trang web chính thức và làm theo hướng dẫn cài đặt. Sau khi cài đặt, bạn có thể mở và chỉnh sửa các tệp HTML của mình dễ dàng.</pre></p>
+=======
+                <p>Để cài đặt VS Code, bạn có thể tải xuống từ trang web chính thức và làm theo hướng dẫn cài đặt. Sau khi cài đặt, bạn có thể mở và chỉnh sửa các tệp HTML của mình dễ dàng.</p>
+>>>>>>> 09fd559 (add new all)
                 <img src="./image/1_giới thiệu visual studio code.png" alt="VS Code Setup" class="section-image" >
                 <img src="./image/2_giới thiệu visual studio code.png" alt="VS Code Setup" class="section-image" >
             </div>
@@ -59,9 +68,15 @@ const courseContentData = {
                 </pre>
              <h3>Cấu trúc chung của html gồm có thẻ <!DOCTYPE html> dùng để xác định rằng code bạn đang dùng là html</h3>
 
+<<<<<<< HEAD
 <p>Cặp thẻ đóng mở <html> </html> chứa toàn bộ các dòng lệnh html bên trong (sau này còn là code của Javascript và CSS khi chèn vào)
 Tiếp đến là 2 cặp thẻ <head></head> chứa thông tin của webpage và đặc trưng bởi thẻ <title></title>, mà mặc định sẽ không được hiển thị trên web
 Thẻ <body></body> chứa toàn bộ nội dung html sẽ hiển thị lên trên trang web của chúng ta.</p>
+=======
+            <p>Cặp thẻ đóng mở <html> </html> chứa toàn bộ các dòng lệnh html bên trong (sau này còn là code của Javascript và CSS khi chèn vào)
+            Tiếp đến là 2 cặp thẻ <head></head> chứa thông tin của webpage và đặc trưng bởi thẻ <title></title>, mà mặc định sẽ không được hiển thị trên web
+            Thẻ <body></body> chứa toàn bộ nội dung html sẽ hiển thị lên trên trang web của chúng ta.</p>
+>>>>>>> 09fd559 (add new all)
             </div>
            
             <div class="section" id="conclusion">
@@ -83,9 +98,22 @@ Thẻ <body></body> chứa toàn bộ nội dung html sẽ hiển thị lên tr�
                 <p>Các nhóm học tập trực tuyến như Stack Overflow và Reddit là những nơi tốt để đặt câu hỏi và trao đổi kiến thức với cộng đồng.</p>
             </div>
         </div>
+<<<<<<< HEAD
         `,
     3: "Will be open on 08/28/2024, there will be a private class for you 24/24",
     4: "Will be open on 08/28/2024, there will be a private class for you 24/24",
+=======
+        </div>
+        `,
+    3: `<div class="lesson__content"> 
+          Will be open on 08/28/2024, there will be a private class for you 24/24
+        </div>
+        `,
+    4: `<div class="lesson__content"> 
+          Will be open on 08/28/2024, there will be a private class for you 24/24
+        </div>
+        `,
+>>>>>>> 09fd559 (add new all)
     5: `<div class="course-content">
                 <h1>Checkpoint</h1>
                 <p>Now that you have learnt HTML and CSS, you should be able to build static webpages. I recommend you to build as many test projects at each yellow step of the roadmap as possible to solidify what you learn.</p>
@@ -114,6 +142,7 @@ Thẻ <body></body> chứa toàn bộ nội dung html sẽ hiển thị lên tr�
                 </form>
                 <div id="result" class="result" style="display:none;"></div>
             </div>`,
+<<<<<<< HEAD
     6: "New homework will be updated soon.",
     7: "Will be open on 08/28/2024, there will be a private class for you 24/24",
     8: "Will be open on 08/28/2024, there will be a private class for you 24/24",
@@ -138,6 +167,74 @@ Thẻ <body></body> chứa toàn bộ nội dung html sẽ hiển thị lên tr�
   6: {
     1: "This is the content for Course 6, Lesson 1.",
     2: "This is the content for Course 6, Lesson 2.",
+=======
+    6: `<div class="lesson__content"> 
+          Will be open on 08/28/2024, there will be a private class for you 24/24
+        </div>
+        `,
+    7: `<div class="lesson__content"> 
+          Will be open on 08/28/2024, there will be a private class for you 24/24
+        </div>
+        `,
+    8: `<div class="lesson__content"> 
+          Will be open on 08/28/2024, there will be a private class for you 24/24
+        </div>
+        `,
+    9: `<div class="lesson__content"> 
+          Will be open on 08/28/2024, there will be a private class for you 24/24
+        </div>
+        `,
+  },
+  2: {
+    1: `<div class="lesson__content"> 
+          This is the content for Course 2, Lesson 1.
+        </div>
+        `,
+    2: `<div class="lesson__content"> 
+          This is the content for Course 2, Lesson 2.
+        </div>
+        `,
+  },
+  3: {
+    1: `<div class="lesson__content"> 
+          This is the content for Course 3, Lesson 1.
+        </div>
+        `,
+    2: `<div class="lesson__content"> 
+          This is the content for Course 3, Lesson 2.
+        </div>
+        `,
+  },
+  4: {
+    1: `<div class="lesson__content"> 
+          This is the content for Course 4, Lesson 1.
+        </div>
+        `,
+    2: `<div class="lesson__content"> 
+          This is the content for Course 4, Lesson 2.
+        </div>
+        `,
+  },
+  5: {
+    1: `<div class="lesson__content"> 
+          This is the content for Course 5, Lesson 1.
+        </div>
+        `,
+    2: `<div class="lesson__content"> 
+          This is the content for Course 5, Lesson 2.
+        </div>
+        `,
+  },
+  6: {
+    1: `<div class="lesson__content"> 
+          This is the content for Course 6, Lesson 1.
+        </div>
+        `,
+    2: `<div class="lesson__content"> 
+          This is the content for Course 6, Lesson 2.
+        </div>
+        `,
+>>>>>>> 09fd559 (add new all)
   },
   7: {
     1: `
@@ -177,7 +274,11 @@ Thẻ <body></body> chứa toàn bộ nội dung html sẽ hiển thị lên tr�
         function showContactPage() {
             window.location.href = 'contact.html'; // Replace with your contact page link
         }
+<<<<<<< HEAD
     </script>
+=======
+    </script:>
+>>>>>>> 09fd559 (add new all)
 
     `,
     2: `
@@ -225,9 +326,18 @@ Thẻ <body></body> chứa toàn bộ nội dung html sẽ hiển thị lên tr�
     1: "This is the content for Course 8, Lesson 1.",
     2: "This is the content for Course 8, Lesson 2.",
   },
+<<<<<<< HEAD
 };
 
 const lockedCourses = [1,2,3,4,5,6,7,8];
+=======
+  10: {
+    10:"hello"
+  },
+};
+
+const lockedCourses = [10]; 
+>>>>>>> 09fd559 (add new all)
 
 function showCourseContent(courseNumber, lessonNumber) {
   // Kiểm tra nếu khóa học bị khóa
@@ -238,11 +348,21 @@ function showCourseContent(courseNumber, lessonNumber) {
 
   const content =
     courseContentData[courseNumber]?.[lessonNumber] ||
+<<<<<<< HEAD
     "Will be update soon.";
 
   document.getElementById(
     "courseContent"
   ).innerHTML = `<h1>Course ${courseNumber}: Lesson ${lessonNumber}</h1>${content}`;
+=======
+    `<div class="lesson__content"> 
+      Will be update soon.
+    </div>`;
+
+  document.getElementById(
+    "courseContent"
+  ).innerHTML = `<div class="bdlayout"><h1 class="h1Title">Course ${courseNumber}: Lesson ${lessonNumber}</h1>${content}</div>`;
+>>>>>>> 09fd559 (add new all)
 
   document.getElementById("coursePage").style.display = "block";
   document.getElementById("personalPage").style.display = "none";
@@ -261,9 +381,15 @@ function showUpdateSoonMessage() {
   updateSoonMessage.innerHTML = `
         <div class="update-soon-overlay"></div>
         <div class="update-soon-content">
+<<<<<<< HEAD
             <h2>Course Update Soon</h2>
             <p>This course will be updated soon. Please check back later.</p>
             <p>Expected on <b>08/20/2024</b> or maybe earlier</p>
+=======
+            <h2>This course you have owned</h2>
+            <p>You can study and do homework.</p>
+            <p><b>F8</b> team has been collaborating</p>
+>>>>>>> 09fd559 (add new all)
             <button onclick="closeUpdateSoonMessage()">Close</button>
         </div>
     `;
@@ -410,7 +536,12 @@ function handleLogin() {
       address: "50 bedford, west croydon 5008",
       phoneNumber: "0421582472",
       email: "huynhtruongkhanhvy1007@gmail.com",
+<<<<<<< HEAD
       course: "Fullstack, AI and Data Scientist, Software Architect, and GAME DEV",
+=======
+      course:
+        "Fullstack, AI and Data Scientist, Software Architect, and GAME DEV",
+>>>>>>> 09fd559 (add new all)
     };
 
     localStorage.setItem("user", JSON.stringify(user));
@@ -445,4 +576,8 @@ function toggleSubMenu(menuNumber) {
 // Thêm sự kiện cho các mục menu bị khóa
 document.querySelectorAll(".menu-item.locked").forEach((item) => {
   item.addEventListener("click", showLockMessage);
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> 09fd559 (add new all)
