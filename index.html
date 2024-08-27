@@ -460,7 +460,7 @@
         display: none;
       }
       .navMobile {
-        position: absolute;
+        position: fixed;
         top: 10px;
         left: 8px;
         background-color: #333;
@@ -810,28 +810,29 @@
     <div class="snowfall-container">
       <!-- Các bông hoa tuyết sẽ được thêm vào đây -->
     </div>
-    <div class="navbar">
-      <img
-        src="https://cdn-icons-png.flaticon.com/512/9293/9293128.png"
-        class="imgNav1"
-        alt="navbar"
-      />
 
-      <a href="./index.html" style="color: #fff;">
-        <div class="navbar-logo">EDU BASIC</div>
-      </a>
-      <img
-        onclick="showPersonalInfo()"
-        src="./image/okok.jpg"
-        class="imgNav"
-        alt="khanhvy"
-        style="margin-right: 30px"
-      />
-      <!-- <div onclick="showPersonalInfo()" class="userSideBar">
-        <i class="fas fa-user"></i> Personal Info
-      </div> -->
-    </div>
     <div class="container">
+      <div class="navbar">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/9293/9293128.png"
+          class="imgNav1"
+          alt="navbar"
+        />
+
+        <a href="./index.html" style="color: #fff">
+          <div class="navbar-logo">EDU BASIC</div>
+        </a>
+        <img
+          onclick="showPersonalInfo()"
+          src="./image/okok.jpg"
+          class="imgNav"
+          alt="khanhvy"
+          style="margin-right: 30px"
+        />
+        <!-- <div onclick="showPersonalInfo()" class="userSideBar">
+          <i class="fas fa-user"></i> Personal Info
+        </div> -->
+      </div>
       <label for="labelInputNav" class="navMobile"></label>
       <input type="checkbox" id="labelInputNav" />
       <label for="labelInputNav" class="nav_overlay"></label>
@@ -1506,17 +1507,24 @@
           </h1>
           <div id="courseContent"></div>
         </div>
-        <a href="./index.html" style="font-size: 21px;
-        font-weight: bold;
-        margin: 10px 0px;
-        display: inline-block;
-        background-color: red;
-        padding: 5px 12px;
-        border-radius: 7px;
-        color: #fff;" class="bg7">
-          <- Back</a
-        >
+
         <div class="personal-page" id="personalPage" style="display: none">
+          <a
+            href="./index.html"
+            style="
+              font-size: 21px;
+              font-weight: bold;
+              margin: 10px 0px;
+              display: inline-block;
+              background-color: red;
+              padding: 5px 12px;
+              border-radius: 7px;
+              color: #fff;
+            "
+            class="bg7"
+          >
+            <- Back</a
+          >
           <h1>Vy's Profile</h1>
           <div id="personalInfoDisplay">
             <p>
