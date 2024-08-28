@@ -433,7 +433,7 @@ h1 {
 
         `,
     4: `
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -464,7 +464,7 @@ h1 {
         <section style="margin-bottom: 40px;">
             <h2 style="color: #444; font-size: 2em; border-bottom: 2px solid #ddd; padding-bottom: 10px;">Cú Pháp Cơ Bản</h2>
             <p style="line-height: 1.8; font-size: 18px; color: #666;">Để bắt đầu với JavaScript, bạn cần hiểu cách viết cú pháp cơ bản như khai báo biến, hàm, và sử dụng các cấu trúc điều khiển như vòng lặp và điều kiện.</p>
-            <div style="border: 1px solid #ddd; padding: 15px; background-color: #f9f9f9; margin-bottom: 20px;">
+            <div style="border: 1px solid #ddd; padding: 15px; background-color: #f9f9f9; margin-bottom: 20px; overflow: auto;">
                 <pre style="white-space: pre-wrap; font-size: 16px; color: #333;">
 // Khai báo biến
 let message = 'Xin chào, JavaScript!';
@@ -483,7 +483,7 @@ function sayHello() {
             <h2 style="color: #444; font-size: 2em; border-bottom: 2px solid #ddd; padding-bottom: 10px;">Video Hướng Dẫn JavaScript</h2>
             <p style="line-height: 1.8; font-size: 18px; color: #666;">Xem video hướng dẫn bên dưới để hiểu rõ hơn về cú pháp cơ bản và cách sử dụng JavaScript trong thực tế:</p>
             <div style="text-align: center; margin: 20px 0;">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/PkZNo7MFNFg" title="JavaScript Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="max-width: 100%;"></iframe>
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/PkZNo7MFNFg" title="JavaScript Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="max-width: 100%;"></iframe>
             </div>
         </section>
 
@@ -491,7 +491,7 @@ function sayHello() {
         <section style="margin-bottom: 40px;">
             <h2 style="color: #444; font-size: 2em; border-bottom: 2px solid #ddd; padding-bottom: 10px;">Hàm trong JavaScript</h2>
             <p style="line-height: 1.8; font-size: 18px; color: #666;">Hàm là một khối mã được thiết kế để thực hiện một nhiệm vụ cụ thể. Hàm có thể nhận tham số và trả về giá trị.</p>
-            <div style="border: 1px solid #ddd; padding: 15px; background-color: #f9f9f9; margin-bottom: 20px;">
+            <div style="border: 1px solid #ddd; padding: 15px; background-color: #f9f9f9; margin-bottom: 20px; overflow: auto;">
                 <pre style="white-space: pre-wrap; font-size: 16px; color: #333;">
 function sum(a, b) {
     return a + b;
@@ -507,7 +507,7 @@ console.log(result); // Output: 15
         <section style="margin-bottom: 40px;">
             <h2 style="color: #444; font-size: 2em; border-bottom: 2px solid #ddd; padding-bottom: 10px;">Tương Tác Với DOM</h2>
             <p style="line-height: 1.8; font-size: 18px; color: #666;">Document Object Model (DOM) là mô hình đối tượng tài liệu của trang web, cho phép JavaScript thay đổi nội dung và cấu trúc trang web động.</p>
-            <div style="border: 1px solid #ddd; padding: 15px; background-color: #f9f9f9; margin-bottom: 20px;">
+            <div style="border: 1px solid #ddd; padding: 15px; background-color: #f9f9f9; margin-bottom: 20px; overflow: auto;">
                 <pre style="white-space: pre-wrap; font-size: 16px; color: #333;">
 // Thay đổi nội dung của một phần tử
 document.getElementById('demo').innerHTML = 'Hello JavaScript!';
@@ -524,7 +524,7 @@ document.getElementById('myButton').addEventListener('click', function() {
         <section style="margin-bottom: 40px;">
             <h2 style="color: #444; font-size: 2em; border-bottom: 2px solid #ddd; padding-bottom: 10px;">Xử Lý Sự Kiện</h2>
             <p style="line-height: 1.8; font-size: 18px; color: #666;">JavaScript có thể xử lý các sự kiện như nhấp chuột, di chuột, và các hành động người dùng khác để tạo ra trải nghiệm tương tác trên web.</p>
-            <div style="border: 1px solid #ddd; padding: 15px; background-color: #f9f9f9; margin-bottom: 20px;">
+            <div style="border: 1px solid #ddd; padding: 15px; background-color: #f9f9f9; margin-bottom: 20px; overflow: auto;">
                 <pre style="white-space: pre-wrap; font-size: 16px; color: #333;">
 document.querySelector('button').onclick = function() {
     alert('Button clicked!');
@@ -543,6 +543,8 @@ document.querySelector('button').onclick = function() {
 </body>
 
 </html>
+
+
 
         `,
     5: `<div class="course-content">
