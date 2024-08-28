@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("sidebar").style.display = "none";
   }
 });
+
 // Dữ liệu nội dung khóa học
 const courseContentData = {
   1: {
@@ -40,17 +41,17 @@ const courseContentData = {
             <h2 style="color: #6200ea; margin-bottom: 10px;">HTML (HyperText Markup Language)</h2>
             <p style="margin-bottom: 15px;">HTML là ngôn ngữ đánh dấu được sử dụng để tạo cấu trúc của trang web. Nó bao gồm các thẻ để định nghĩa tiêu đề, đoạn văn, hình ảnh, liên kết, và nhiều hơn nữa. Dưới đây là một ví dụ cơ bản về tài liệu HTML:</p>
             <pre style="background-color: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; font-size: 1rem; border: 1px solid #ddd;">
-                &lt;!DOCTYPE html&gt;
-                &lt;html lang="vi"&gt;
-                &lt;head&gt;
-                    &lt;meta charset="UTF-8"&gt;
-                    &lt;title&gt;Tiêu đề của Trang&lt;/title&gt;
-                &lt;/head&gt;
-                &lt;body&gt;
-                    &lt;h1&gt;Chào mừng đến với HTML&lt;/h1&gt;
-                    &lt;p&gt;Đây là một đoạn văn bản mẫu.&lt;/p&gt;
-                &lt;/body&gt;
-                &lt;/html&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang="vi"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Tiêu đề của Trang&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Chào mừng đến với HTML&lt;/h1&gt;
+    &lt;p&gt;Đây là một đoạn văn bản mẫu.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
             </pre>
             <h3 style="color: #6200ea; margin-bottom: 10px;">Các Thẻ HTML Phổ Biến</h3>
             <ul style="margin-bottom: 15px; padding-left: 20px;">
@@ -395,11 +396,11 @@ h1 {
             <p style="line-height: 1.8; font-size: 18px; color: #555;">CSS Grid Layout là một hệ thống bố cục hai chiều mạnh mẽ cho phép bạn tạo ra các thiết kế phức tạp. Bạn có thể kiểm soát hàng và cột của lưới và các vùng của phần tử một cách dễ dàng.</p>
             <div style="border: 1px solid #ddd; padding: 15px; background-color: #f9f9f9; margin-bottom: 20px;">
                 <pre style="white-space: pre-wrap; font-size: 16px; color: #333;">
-                    .grid-container {
-                        display: grid;
-                        grid-template-columns: 1fr 1fr 1fr;
-                        grid-gap: 20px;
-                    }
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+}
                 </pre>
             </div>
         </section>
