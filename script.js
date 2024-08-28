@@ -283,9 +283,155 @@ p {
 </body>
 </html>`
 ,
-    3: `<div class="lesson__content"> 
-          Will be open on 08/28/2024, there will be a private class for you 24/24
-        </div>
+    3: `
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Học CSS Cơ Bản</title>
+</head>
+
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f9;">
+
+    <!-- Header -->
+    <header style="background-color: #4CAF50; color: white; text-align: center; padding: 30px 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+        <h1 style="margin: 0; font-size: 2.5em;">Chào Mừng Bạn Đến Với Khóa Học CSS Cơ Bản</h1>
+        <p style="margin: 5px 0 0 0; font-size: 1.2em;">Học và thực hành CSS để tạo ra các trang web đẹp và chuyên nghiệp!</p>
+    </header>
+
+    <!-- Main content -->
+    <main style="padding: 40px 20px; max-width: 1200px; margin: auto;">
+
+        <!-- Introduction section -->
+        <section style="margin-bottom: 40px;">
+            <h2 style="color: #333; font-size: 2em; border-bottom: 2px solid #ddd; padding-bottom: 10px;">Giới Thiệu Về CSS</h2>
+            <p style="line-height: 1.8; font-size: 18px; color: #555;">CSS (Cascading Style Sheets) là ngôn ngữ dùng để tạo style cho trang web. CSS giúp bạn tùy chỉnh màu sắc, phông chữ, bố cục, và nhiều hơn nữa. Nó đóng vai trò quan trọng trong việc tạo ra giao diện người dùng và trải nghiệm tương tác trên web.</p>
+        </section>
+
+        <!-- Basic syntax section -->
+        <section style="margin-bottom: 40px;">
+            <h2 style="color: #333; font-size: 2em; border-bottom: 2px solid #ddd; padding-bottom: 10px;">Cú Pháp Cơ Bản</h2>
+            <div style="border: 1px solid #ddd; padding: 15px; background-color: #f9f9f9; margin-bottom: 20px;">
+                <pre style="white-space: pre-wrap; font-size: 16px; color: #333;">
+selector {
+    property: value;
+}
+                </pre>
+            </div>
+            <p style="line-height: 1.8; font-size: 18px; color: #555;">Ví dụ: Đổi màu chữ thành xanh cho tất cả đoạn văn.</p>
+            <div style="border: 1px solid #ddd; padding: 15px; background-color: #f9f9f9; margin-bottom: 20px;">
+                <pre style="white-space: pre-wrap; font-size: 16px; color: #333;">
+p {
+    color: blue;
+}
+                </pre>
+            </div>
+        </section>
+
+        <!-- Box model section -->
+        <section style="margin-bottom: 40px;">
+            <h2 style="color: #333; font-size: 2em; border-bottom: 2px solid #ddd; padding-bottom: 10px;">Box Model</h2>
+            <p style="line-height: 1.8; font-size: 18px; color: #555;">Mỗi phần tử trong CSS được xem như một hộp hình chữ nhật bao gồm <strong>content</strong>, <strong>padding</strong>, <strong>border</strong>, và <strong>margin</strong>. Hiểu rõ về Box Model là chìa khóa để điều chỉnh khoảng cách, kích thước và bố cục của phần tử HTML.</p>
+            <img src="https://via.placeholder.com/600x300.png?text=Box+Model+Diagram" alt="Box Model Diagram" style="width: 100%; max-width: 600px; display: block; margin: 20px auto;">
+        </section>
+
+        <!-- Color section -->
+        <section style="margin-bottom: 40px;">
+            <h2 style="color: #333; font-size: 2em; border-bottom: 2px solid #ddd; padding-bottom: 10px;">Màu Sắc Trong CSS</h2>
+            <p style="line-height: 1.8; font-size: 18px; color: #555;">CSS cho phép bạn tùy chỉnh màu sắc của văn bản, nền, đường viền, và nhiều phần tử khác. Bạn có thể sử dụng tên màu (vd: red, blue), mã màu hex (vd: #ff0000), mã RGB (vd: rgb(255,0,0)), và mã RGBA (vd: rgba(255,0,0,0.5)) để thiết lập màu sắc.</p>
+            <div style="border: 1px solid #ddd; padding: 15px; background-color: #f9f9f9; margin-bottom: 20px;">
+                <pre style="white-space: pre-wrap; font-size: 16px; color: #333;">
+body {
+    background-color: #f0f0f0;
+}
+
+h1 {
+    color: #4CAF50;
+}
+
+p {
+    color: rgba(0, 0, 0, 0.8);
+}
+                </pre>
+            </div>
+        </section>
+
+        <!-- Typography section -->
+        <section style="margin-bottom: 40px;">
+            <h2 style="color: #333; font-size: 2em; border-bottom: 2px solid #ddd; padding-bottom: 10px;">Phông Chữ và Kiểu Chữ</h2>
+            <p style="line-height: 1.8; font-size: 18px; color: #555;">CSS cung cấp các thuộc tính để thay đổi phông chữ (font family), kích thước chữ (font size), độ đậm (font weight), kiểu chữ (font style), và khoảng cách giữa các ký tự (letter spacing).</p>
+            <div style="border: 1px solid #ddd; padding: 15px; background-color: #f9f9f9; margin-bottom: 20px;">
+                <pre style="white-space: pre-wrap; font-size: 16px; color: #333;">
+h1 {
+    font-family: 'Arial', sans-serif;
+    font-size: 36px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+                </pre>
+            </div>
+        </section>
+
+        <!-- Flexbox section -->
+        <section style="margin-bottom: 40px;">
+            <h2 style="color: #333; font-size: 2em; border-bottom: 2px solid #ddd; padding-bottom: 10px;">Flexbox</h2>
+            <p style="line-height: 1.8; font-size: 18px; color: #555;">Flexbox là một phương pháp bố cục một chiều trong CSS. Nó giúp dễ dàng sắp xếp và căn chỉnh các phần tử bên trong một container theo các chiều khác nhau (ngang hoặc dọc).</p>
+            <div style="border: 1px solid #ddd; padding: 15px; background-color: #f9f9f9; margin-bottom: 20px;">
+                <pre style="white-space: pre-wrap; font-size: 16px; color: #333;">
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+                </pre>
+            </div>
+        </section>
+
+        <!-- Grid section -->
+        <section style="margin-bottom: 40px;">
+            <h2 style="color: #333; font-size: 2em; border-bottom: 2px solid #ddd; padding-bottom: 10px;">Grid Layout</h2>
+            <p style="line-height: 1.8; font-size: 18px; color: #555;">CSS Grid Layout là một hệ thống bố cục hai chiều mạnh mẽ cho phép bạn tạo ra các thiết kế phức tạp. Bạn có thể kiểm soát hàng và cột của lưới và các vùng của phần tử một cách dễ dàng.</p>
+            <div style="border: 1px solid #ddd; padding: 15px; background-color: #f9f9f9; margin-bottom: 20px;">
+                <pre style="white-space: pre-wrap; font-size: 16px; color: #333;">
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+}
+                </pre>
+            </div>
+        </section>
+
+        <!-- Responsive Design section -->
+        <section style="margin-bottom: 40px;">
+            <h2 style="color: #333; font-size: 2em; border-bottom: 2px solid #ddd; padding-bottom: 10px;">Thiết Kế Responsive</h2>
+            <p style="line-height: 1.8; font-size: 18px; color: #555;">Thiết kế responsive là kỹ thuật CSS để tạo ra các trang web có thể tự động điều chỉnh giao diện để phù hợp với các kích thước màn hình khác nhau.</p>
+            <div style="border: 1px solid #ddd; padding: 15px; background-color: #f9f9f9; margin-bottom: 20px;">
+                <pre style="white-space: pre-wrap; font-size: 16px; color: #333;">
+@media screen and (max-width: 600px) {
+    body {
+        background-color: lightblue;
+    }
+}
+                </pre>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer style="background-color: #4CAF50; color: white; text-align: center; padding: 20px 0; margin-top: 40px;">
+        <p style="margin: 0; font-size: 1em;">© 2024 Học CSS Cơ Bản. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
+
+
         `,
     4: `<div class="lesson__content"> 
           Will be open on 08/28/2024, there will be a private class for you 24/24
