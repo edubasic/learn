@@ -433,9 +433,118 @@ h1 {
 
 
         `,
-    4: `<div class="lesson__content"> 
-          Will be open on 08/28/2024, there will be a private class for you 24/24
-        </div>
+    4: `
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Học JavaScript Cơ Bản</title>
+</head>
+
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f3f4f7;">
+
+    <!-- Header -->
+    <header style="background-color: #333; color: white; text-align: center; padding: 30px 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+        <h1 style="margin: 0; font-size: 2.5em;">Chào Mừng Bạn Đến Với Khóa Học JavaScript Cơ Bản</h1>
+        <p style="margin: 5px 0 0 0; font-size: 1.2em;">Khám phá thế giới JavaScript với các bài học và ví dụ thực tiễn!</p>
+    </header>
+
+    <!-- Main content -->
+    <main style="padding: 40px 20px; max-width: 1200px; margin: auto;">
+
+        <!-- Introduction section -->
+        <section style="margin-bottom: 40px;">
+            <h2 style="color: #444; font-size: 2em; border-bottom: 2px solid #ddd; padding-bottom: 10px;">Giới Thiệu Về JavaScript</h2>
+            <p style="line-height: 1.8; font-size: 18px; color: #666;">JavaScript là ngôn ngữ lập trình phổ biến nhất cho web. Nó giúp bạn thêm tương tác và động lực vào các trang web, từ việc xử lý các sự kiện đơn giản đến xây dựng các ứng dụng phức tạp như trò chơi và trình duyệt web.</p>
+        </section>
+
+        <!-- Basic syntax section -->
+        <section style="margin-bottom: 40px;">
+            <h2 style="color: #444; font-size: 2em; border-bottom: 2px solid #ddd; padding-bottom: 10px;">Cú Pháp Cơ Bản</h2>
+            <p style="line-height: 1.8; font-size: 18px; color: #666;">Để bắt đầu với JavaScript, bạn cần hiểu cách viết cú pháp cơ bản như khai báo biến, hàm, và sử dụng các cấu trúc điều khiển như vòng lặp và điều kiện.</p>
+            <div style="border: 1px solid #ddd; padding: 15px; background-color: #f9f9f9; margin-bottom: 20px;">
+                <pre style="white-space: pre-wrap; font-size: 16px; color: #333;">
+// Khai báo biến
+let message = 'Xin chào, JavaScript!';
+console.log(message);
+
+// Hàm đơn giản
+function sayHello() {
+    alert('Xin chào, bạn đã nhấn nút!');
+}
+                </pre>
+            </div>
+        </section>
+
+        <!-- Video section -->
+        <section style="margin-bottom: 40px;">
+            <h2 style="color: #444; font-size: 2em; border-bottom: 2px solid #ddd; padding-bottom: 10px;">Video Hướng Dẫn JavaScript</h2>
+            <p style="line-height: 1.8; font-size: 18px; color: #666;">Xem video hướng dẫn bên dưới để hiểu rõ hơn về cú pháp cơ bản và cách sử dụng JavaScript trong thực tế:</p>
+            <div style="text-align: center; margin: 20px 0;">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/PkZNo7MFNFg" title="JavaScript Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="max-width: 100%;"></iframe>
+            </div>
+        </section>
+
+        <!-- Functions section -->
+        <section style="margin-bottom: 40px;">
+            <h2 style="color: #444; font-size: 2em; border-bottom: 2px solid #ddd; padding-bottom: 10px;">Hàm trong JavaScript</h2>
+            <p style="line-height: 1.8; font-size: 18px; color: #666;">Hàm là một khối mã được thiết kế để thực hiện một nhiệm vụ cụ thể. Hàm có thể nhận tham số và trả về giá trị.</p>
+            <div style="border: 1px solid #ddd; padding: 15px; background-color: #f9f9f9; margin-bottom: 20px;">
+                <pre style="white-space: pre-wrap; font-size: 16px; color: #333;">
+function sum(a, b) {
+    return a + b;
+}
+
+let result = sum(5, 10);
+console.log(result); // Output: 15
+                </pre>
+            </div>
+        </section>
+
+        <!-- DOM Manipulation section -->
+        <section style="margin-bottom: 40px;">
+            <h2 style="color: #444; font-size: 2em; border-bottom: 2px solid #ddd; padding-bottom: 10px;">Tương Tác Với DOM</h2>
+            <p style="line-height: 1.8; font-size: 18px; color: #666;">Document Object Model (DOM) là mô hình đối tượng tài liệu của trang web, cho phép JavaScript thay đổi nội dung và cấu trúc trang web động.</p>
+            <div style="border: 1px solid #ddd; padding: 15px; background-color: #f9f9f9; margin-bottom: 20px;">
+                <pre style="white-space: pre-wrap; font-size: 16px; color: #333;">
+// Thay đổi nội dung của một phần tử
+document.getElementById('demo').innerHTML = 'Hello JavaScript!';
+
+// Thêm sự kiện vào một nút
+document.getElementById('myButton').addEventListener('click', function() {
+    alert('Bạn đã nhấn nút!');
+});
+                </pre>
+            </div>
+        </section>
+
+        <!-- Event Handling section -->
+        <section style="margin-bottom: 40px;">
+            <h2 style="color: #444; font-size: 2em; border-bottom: 2px solid #ddd; padding-bottom: 10px;">Xử Lý Sự Kiện</h2>
+            <p style="line-height: 1.8; font-size: 18px; color: #666;">JavaScript có thể xử lý các sự kiện như nhấp chuột, di chuột, và các hành động người dùng khác để tạo ra trải nghiệm tương tác trên web.</p>
+            <div style="border: 1px solid #ddd; padding: 15px; background-color: #f9f9f9; margin-bottom: 20px;">
+                <pre style="white-space: pre-wrap; font-size: 16px; color: #333;">
+document.querySelector('button').onclick = function() {
+    alert('Button clicked!');
+};
+                </pre>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer style="background-color: #333; color: white; text-align: center; padding: 20px 0; margin-top: 40px;">
+        <p style="margin: 0; font-size: 1em;">© 2024 Học JavaScript Cơ Bản. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
+
         `,
     5: `<div class="course-content">
                 <h1>Checkpoint</h1>
