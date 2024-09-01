@@ -1,94 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snowfall Background</title>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
-            background-color: #00274d; /* Màu nền xanh đậm */
-            overflow: hidden;
-            font-family: Arial, sans-serif;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image Gallery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
 
-        .snowfall-container {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            pointer-events: none;
-        }
+    .gallery-container {
+      position: relative;
+      max-width: 600px;
+      margin: 0 auto;
+    }
 
-        .snowflake {
-            position: absolute;
-            top: -10px;
-            width: 30px;
-            height: 30px;
-            background-image: url('./image/tuyet.png'); /* Đường dẫn đến hình bông hoa tuyết */
-            background-size: cover;
-            opacity: 0.8;
-            animation: fall linear infinite;
-        }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
 
-        @keyframes fall {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0.5;
-            }
-        }
+    .gallery img {
+      width: calc(50% - 5px); /* Two images per row, accounting for the gap */
+      height: 150px;
+      object-fit: cover;
+      cursor: pointer;
+    }
 
-        .content {
-            position: relative;
-            z-index: 1;
-        }
+    .more-images {
+      font-size: 14px;
+      color: #888;
+      text-align: center;
+      margin-top: 10px;
+      display: none;
+    }
 
-        h1 {
-            font-size: 48px;
-            margin: 0;
-        }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
 
-        p {
-            font-size: 24px;
-            margin: 10px 0;
-        }
-    </style>
+    .modal-content {
+      position: relative;
+    }
+
+    .modal-image {
+      max-width: 90vw;
+      max-height: 80vh;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 30px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .prev,
+    .next {
+      position: absolute;
+      top: 50%;
+      font-size: 24px;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      transform: translateY(-50%);
+    }
+
+    .prev {
+      left: 10px;
+    }
+
+    .next {
+      right: 10px;
+    }
+  </style>
 </head>
 <body>
-    <div class="snowfall-container">
-        <!-- Các bông hoa tuyết sẽ được thêm vào đây -->
-    </div>
+  <div class="gallery-container" id="gallery-container-1"></div>
+  <div class="gallery-container" id="gallery-container-2"></div>
 
-    <div class="content">
-        <h1>Welcome to the Winter Wonderland</h1>
-        <p>Enjoy the snowfall!</p>
-    </div>
-
-    <script>
-        const container = document.querySelector('.snowfall-container');
-        const numberOfSnowflakes = 50; // Số lượng bông hoa tuyết
-
-        for (let i = 0; i < numberOfSnowflakes; i++) {
-            const snowflake = document.createElement('div');
-            snowflake.className = 'snowflake';
-            snowflake.style.left = Math.random() * 100 + 'vw';
-            snowflake.style.animationDuration = Math.random() * 10 + 10 + 's'; // Điều chỉnh tốc độ rơi
-            snowflake.style.opacity = Math.random();
-            snowflake.style.transform = `scale(${Math.random() * 0.5 + 0.5})`; // Kích thước khác nhau
-            container.appendChild(snowflake);
-        }
-    </script>
+  <script src="gallery.js"></script>
 </body>
 </html>
