@@ -13,9 +13,33 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   box-sizing: border-box;
+  position: relative;
 }
-h3,p{
-    margin: 0;
+h3,
+p {
+  margin: 0;
+}
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.back {
+  position: absolute;
+  padding: 10px 20px;
+  background: linear-gradient(to right, #ac3636, #18d8f1);
+  color: #e9e6e6;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  top: 15px;
+  left: 15px;
+  transition: all 0.2s linear;
+  font-size: 17px;
+  font-weight: bold;
+}
+.back:hover {
+  transform: scale(0.9);
 }
 .page-title {
   text-align: center;
