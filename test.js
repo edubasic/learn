@@ -13,7 +13,7 @@ function confirmPayment() {
   }
   function checkLogin() {
     var loginKey = document.getElementById("loginKey").value;
-    if (loginKey === "edubasic1234") {
+    if (loginKey === "ztehtkv2007") {
       // Example valid key
       document.getElementById("loginSection").style.display = "none";
       document.querySelector(".container").style.display = "flex";
@@ -175,10 +175,10 @@ function showwarningToast(){
 
 function showSuccessToast() {
     toast({
-    title: "Thành công!",
-    message: "Bạn đã đăng ký thành công tài khoản tại F8.",
+    title: "Vui lòng chờ!",
+    message: "Sau khi nhận được, chúng tôi sẽ gửi biên lai về gmail của bạn.",
     type: "success",
-    duration: 30000
+    duration: 5000
     });
 }
 
