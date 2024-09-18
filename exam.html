@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nộp Bài Thi</title>
+    <style>
+        * {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Nền tối */
+    color: #ffffff; /* Chữ màu trắng */
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: #1e1e1e; /* Nền của container */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    text-align: center;
+    color: #76ff03; /* Màu xanh sáng cho tiêu đề */
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #e0e0e0; /* Màu nhạt cho label */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="file"],
+button {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #555; /* Đường viền màu xám */
+    border-radius: 4px;
+    background: #303030; /* Nền input tối */
+    color: #ffffff; /* Chữ màu trắng */
+}
+
+button {
+    background-color: #76ff03; /* Nền xanh sáng cho nút */
+    color: black; /* Chữ màu đen cho nút */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Hiệu ứng chuyển màu */
+}
+
+button:hover {
+    background-color: #5efc82; /* Màu nền khi hover */
+}
+
+.hidden {
+    display: none;
+}
+
+#message {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 18px;
+    color: #76ff03; /* Màu thông báo */
+    position: absolute; /* Vị trí tuyệt đối */
+    top: 50%; /* Giữa màn hình */
+    left: 50%; /* Giữa màn hình */
+    transform: translate(-50%, -50%); /* Canh giữa */
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1); /* Nền thông báo trong suốt */
+    border: 1px solid #76ff03; /* Đường viền màu xanh sáng */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000; /* Đảm bảo thông báo nằm trên các phần khác */
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>EDU BASIC</h1>
+        <form id="submissionForm">
+            <div class="form-group">
+                <label for="name">Code Name:</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="file">Your file:</label>
+                <input type="file" id="file" accept=".pdf,.doc,.docx,.ppt,.pptx" required>
+            </div>
+            <button type="submit">Send</button>
+        </form>
+        <div id="message" class="hidden"></div>
+    </div>
+    <script>
+        document.getElementById('submissionForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const file = document.getElementById('file').files[0];
+
+    if (file) {
+        // Hiện thông báo nộp bài thành công
+        const messageElement = document.getElementById('message');
+        messageElement.innerText = `Thanks ${name}, your exam sent successfully!`;
+        messageElement.classList.remove('hidden');
+
+        // Tự động tắt thông báo sau 2 giây
+        setTimeout(() => {
+            messageElement.classList.add('hidden');
+        }, 2000);
+
+        this.reset(); // Reset form
+    } else {
+        const messageElement = document.getElementById('message');
+        messageElement.innerText = 'Please choose your file.';
+        messageElement.classList.remove('hidden');
+
+        // Tự động tắt thông báo sau 2 giây
+        setTimeout(() => {
+            messageElement.classList.add('hidden');
+        }, 2000);
+    }
+});
+
+    </script>
+</body>
+</html>
