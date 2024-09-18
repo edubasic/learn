@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Report</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="styles_review.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="container">
+    <header id="header">
+      <h1><i class="fas fa-graduation-cap"></i> Student's Performance Report <h1 style="color: deepskyblue;">EDU BASIC
+        </h1>
+      </h1>
+    </header>
+
+    <!-- Login Form -->
+    <div id="login-form">
+      <h2><i class="fas fa-user"></i> Login</h2>
+      <p>Enter your login code to continue:</p>
+      <input type="password" id="login-code" placeholder="Enter login code" required>
+      <button id="login-btn" onclick="login()">Login <i class="fas fa-sign-in-alt"></i></button>
+      <p id="error-message" style="color: red; display: none;">Invalid code, please try again.</p>
+    </div>
+
+    <!-- Subject Report (Hidden until login) -->
+    <section id="report" class="subjects" style="display: none;">
+      <p id="student-name">Name: Vy</p>
+      <p id="online-students"></p> <!-- Phần số lượng học sinh online -->
+      <br>
+      <div class="subject">
+        <h2><i class="fab fa-html5"></i> HTML</h2>
+        <div class="levels">
+          <div>
+            <p>Basic:</p>
+            <span id="html-basic">85</span>
+          </div>
+          <div>
+            <p>Advanced:</p>
+            <span id="html-advanced">60</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="subject">
+        <h2><i class="fab fa-css3-alt"></i> CSS</h2>
+        <div class="levels">
+          <div>
+            <p>Basic:</p>
+            <span id="css-basic">70</span>
+          </div>
+          <div>
+            <p>Advanced:</p>
+            <span id="css-advanced" style="color: red;">49</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="subject">
+        <h2><i class="fab fa-js"></i> JavaScript</h2>
+        <div class="levels">
+          <div>
+            <p>Basic:</p>
+            <span id="js-basic">75</span>
+          </div>
+          <div>
+            <p>Advanced:</p>
+            <span id="js-advanced">50</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="subject">
+        <h2>Another....</h2>
+        <div class="levels">
+          <div>
+            <p>Basic:</p>
+            <span id="js-basic">none</span>
+          </div>
+          <div>
+            <p>Advanced:</p>
+            <span id="js-advanced">none</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Notification Modal -->
+    <div id="notification" class="modal" style="display: none;">
+      <p id="notification-text"></p>
+    </div>
+  </div>
+
+  <script src="script_review.js"></script>
+</body>
+
+</html>

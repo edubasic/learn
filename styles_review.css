@@ -1,0 +1,169 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f7fc;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+header h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 30px;
+}
+
+header h1 i {
+  color: #3498db;
+  margin-right: 10px;
+}
+
+.subject {
+  background-color: #ecf0f1;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.subject:hover {
+  transform: translateY(-10px);
+}
+
+.subject h2 {
+  font-size: 20px;
+  color: #2980b9;
+  margin-bottom: 15px;
+}
+
+.subject h2 i {
+  margin-right: 10px;
+}
+
+.levels {
+  display: flex;
+  justify-content: space-between;
+}
+
+.levels div {
+  text-align: left;
+}
+
+.levels div p {
+  font-weight: 600;
+  font-size: 16px;
+  color: #2c3e50;
+}
+
+.levels div span {
+  font-size: 18px;
+  color: #27ae60;
+  font-weight: bold;
+}
+
+/* CSS cho form đăng nhập */
+#login-form {
+  margin-bottom: 20px;
+}
+
+#login-form input {
+  padding: 10px;
+  width: 80%;
+  margin-bottom: 10px;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+}
+
+#login-form button {
+  background-color: #2980b9;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#login-form button:hover {
+  background-color: #3498db;
+  transform: scale(1.05);
+}
+
+/* CSS cho modal thông báo */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+  z-index: 1000;
+  text-align: center;
+  width: 80%;
+  max-width: 300px;
+}
+
+#notification-text {
+  font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  header h1 {
+    font-size: 20px;
+  }
+
+  .subject h2 {
+    font-size: 18px;
+  }
+
+  .levels div p {
+    font-size: 14px;
+  }
+
+  .levels div span {
+    font-size: 16px;
+  }
+}
+#online-students {
+  font-size: 18px;
+  color: #27ae60;
+  margin-bottom: 20px;
+}
