@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,18 +8,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="styles_review.css">
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Include Chart.js -->
 </head>
-
 <body>
   <div class="container">
     <header id="header">
-      <h1><i class="fas fa-graduation-cap"></i> Student's Performance Report <h1 style="color: deepskyblue;">EDU BASIC
-        </h1>
-      </h1>
+      <h1><i class="fas fa-graduation-cap"></i> Student's Performance Report <span style="color: deepskyblue;">EDU BASIC</span></h1>
     </header>
 
     <!-- Login Form -->
-    <div id="login-form">
+    <div id="login-form" class="card">
       <h2><i class="fas fa-user"></i> Login</h2>
       <p>Enter your login code to continue:</p>
       <input type="password" id="login-code" placeholder="Enter login code" required>
@@ -30,63 +27,80 @@
 
     <!-- Subject Report (Hidden until login) -->
     <section id="report" class="subjects" style="display: none;">
-      <p id="student-name">Name: Vy</p>
-      <p id="online-students"></p> <!-- Phần số lượng học sinh online -->
-      <br>
-      <div class="subject">
-        <h2><i class="fab fa-html5"></i> HTML</h2>
-        <div class="levels">
-          <div>
-            <p>Basic:</p>
-            <span id="html-basic">85</span>
+      <div class="report-header">
+        <p id="student-name">Name: Vy</p>
+        <p id="online-students"></p>
+      </div>
+
+      <!-- Subject List -->
+      <div class="subject-list">
+        <div class="subject card">
+          <h2><i class="fab fa-html5"></i> HTML</h2>
+          <div class="levels">
+            <div>
+              <p>Basic:</p>
+              <span id="html-basic">85</span>
+            </div>
+            <div>
+              <p>Advanced:</p>
+              <span id="html-advanced">60</span>
+            </div>
           </div>
-          <div>
-            <p>Advanced:</p>
-            <span id="html-advanced">60</span>
+        </div>
+
+        <div class="subject card">
+          <h2><i class="fab fa-css3-alt"></i> CSS</h2>
+          <div class="levels">
+            <div>
+              <p>Basic:</p>
+              <span id="css-basic">90</span>
+            </div>
+            <div>
+              <p>Advanced:</p>
+              <span id="css-advanced">80</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="subject card">
+          <h2><i class="fab fa-js"></i> JavaScript</h2>
+          <div class="levels">
+            <div>
+              <p>Basic:</p>
+              <span id="js-basic">90</span>
+            </div>
+            <div>
+              <p>Advanced:</p>
+              <span id="js-advanced">50</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="subject">
-        <h2><i class="fab fa-css3-alt"></i> CSS</h2>
-        <div class="levels">
-          <div>
-            <p>Basic:</p>
-            <span id="css-basic">70</span>
-          </div>
-          <div>
-            <p>Advanced:</p>
-            <span id="css-advanced" style="color: red;">49</span>
-          </div>
+      <!-- Enhanced Test Scores Section -->
+      <div class="test-scores card">
+        <h2>Test Scores</h2>
+        <div class="score-card">
+          <i class="fab fa-html5 score-icon" style="color: #e34c26;"></i>
+          <p>HTML</p>
+          <span id="html-score">90</span>
+        </div>
+        <div class="score-card">
+          <i class="fab fa-css3-alt score-icon" style="color: #264de4;"></i>
+          <p>CSS</p>
+          <span id="css-score">80</span>
+        </div>
+        <div class="score-card">
+          <i class="fab fa-js score-icon" style="color: #f7df1e;"></i>
+          <p>JavaScript</p>
+          <span id="js-score">75</span>
         </div>
       </div>
 
-      <div class="subject">
-        <h2><i class="fab fa-js"></i> JavaScript</h2>
-        <div class="levels">
-          <div>
-            <p>Basic:</p>
-            <span id="js-basic">75</span>
-          </div>
-          <div>
-            <p>Advanced:</p>
-            <span id="js-advanced">50</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="subject">
-        <h2>Another....</h2>
-        <div class="levels">
-          <div>
-            <p>Basic:</p>
-            <span id="js-basic">none</span>
-          </div>
-          <div>
-            <p>Advanced:</p>
-            <span id="js-advanced">none</span>
-          </div>
-        </div>
+      <!-- Enhanced Performance Chart -->
+      <div class="chart-container card">
+        <h2>Performance Chart</h2>
+        <canvas id="performanceChart"></canvas>
       </div>
     </section>
 
@@ -98,5 +112,4 @@
 
   <script src="script_review.js"></script>
 </body>
-
 </html>
