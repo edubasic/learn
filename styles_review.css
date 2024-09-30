@@ -262,3 +262,105 @@ header h1 i {
   color: #27ae60;
   margin-bottom: 20px;
 }
+/* International Exam Section */
+.exam-info {
+  background: linear-gradient(135deg, #4b79a1, #283e51);
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.exam-info:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.exam-info h2 {
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.exam-info h2 i {
+  font-size: 28px;
+  margin-right: 10px;
+  color: #ffd700; /* Gold icon for premium feel */
+}
+
+.exam-info p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+#enroll-btn {
+  background: linear-gradient(to right, #ff9966, #ff5e62);
+  color: white;
+  padding: 12px 25px;
+  border-radius: 30px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+#enroll-btn i {
+  margin-left: 10px;
+}
+
+#enroll-btn:hover {
+  background: linear-gradient(to right, #ff5e62, #ff9966);
+  transform: scale(1.05);
+}
+
+#enroll-btn:active {
+  transform: scale(1);
+}
+
+/* Responsive Styling for International Exam Section */
+@media screen and (max-width: 768px) {
+  .exam-info {
+    padding: 20px;
+  }
+
+  .exam-info h2 {
+    font-size: 20px;
+  }
+
+  .exam-info p {
+    font-size: 14px;
+  }
+
+  #enroll-btn {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+}
+/* Discount Code Styling */
+.discount-code {
+  background: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  display: inline-block;
+  margin: 20px 0;
+  font-size: 18px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.discount-code:hover {
+  transform: scale(1.05);
+}
+
+.discount-code span {
+  font-weight: bold;
+  color: #ffd700; /* Gold color for the discount code */
+}
