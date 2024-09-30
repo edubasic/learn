@@ -131,3 +131,62 @@ function renderChart() {
         }
     });
 }
+function showEnrollmentNotification() {
+    showNotification('Get ready for the International Exam! Enrollment successful.');
+}
+
+// Event listener for enrollment button click
+document.getElementById('enroll-btn').addEventListener('click', () => {
+    // Redirect to pay.html with a slight delay for a smooth effect
+    setTimeout(() => {
+        location.href = 'pay1.html';
+    }, 500);
+    
+    // Display enrollment notification
+    showEnrollmentNotification();
+});
+
+// Modified showNotification function for a premium look
+function showNotification(message) {
+    const notification = document.getElementById('notification');
+    const notificationText = document.getElementById('notification-text');
+    
+    // Update notification content
+    notificationText.textContent = message;
+    
+    // Show notification with premium styles
+    notification.classList.add('show');
+    notification.style.backgroundColor = '#4b79a1';
+    notification.style.color = '#ffd700'; // Gold color for text
+    
+    // Hide notification after 3 seconds
+    setTimeout(() => {
+        notification.classList.remove('show');
+    }, 5000);
+}
+function enroll() {
+    const discountCode = document.getElementById('discount-code').textContent;
+    
+    // Show enrollment message
+    document.getElementById('enrollment-message').textContent = `Using discount code: ${discountCode}. Redirecting to payment...`;
+    document.getElementById('enrollment-message').style.display = 'block';
+    
+    // Redirect to payment page after a delay
+    setTimeout(() => {
+        location.href = 'pay1.html';
+    }, 2000);
+}
+
+function showNotification(message) {
+    const notification = document.getElementById('notification');
+    const notificationText = document.getElementById('notification-text');
+    
+    notificationText.textContent = message;
+    notification.classList.add('show');
+    notification.style.backgroundColor = '#4b79a1';
+    notification.style.color = '#ffd700'; // Gold text color for notifications
+
+    setTimeout(() => {
+        notification.classList.remove('show');
+    }, 3000);
+}
