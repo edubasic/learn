@@ -76,7 +76,6 @@
           </div>
         </div>
       </div>
-
       <!-- Enhanced Test Scores Section -->
       <div class="test-scores card">
         <h2>Test Scores</h2>
@@ -102,6 +101,23 @@
         <h2>Performance Chart</h2>
         <canvas id="performanceChart"></canvas>
       </div>
+
+      <!-- International Exam Section -->
+      <div class="exam-info card">
+        <h2><i class="fas fa-globe"></i> International Exam in December!</h2>
+        <p>Get ready to elevate your skills to the next level! The International Web Development Exam is happening this December, and it's your chance to showcase your expertise in HTML, CSS, and JavaScript. This globally recognized certificate will boost your resume and open up new job opportunities!</p>
+        <p>As a special offer, we're providing an exclusive discount for early enrollees. Use the code below to get a **60% discount** on your enrollment fee:</p>
+        
+        
+        <!-- Display Discount Code -->
+        <div class="discount-code">
+          <p>Use Code: <span id="discount-code">HTKV1130</span></p>
+        </div>
+
+        <button id="enroll-btn" onclick="enroll()">Enroll Now <i class="fas fa-arrow-right"></i></button>
+        <p id="enrollment-message" style="color: limegreen; display: none;">Redirecting to payment...</p>
+      </div>
+    </section>
     </section>
 
     <!-- Notification Modal -->
