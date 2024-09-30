@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thanh Toán Khóa Học Quốc Tế</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    /* Base Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fce4ec, #e3f2fd);
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      margin: 0;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Highlight Effect */
+    .highlight {
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    }
+
+    /* Loader Styles */
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    #loader .spinner {
+      border: 5px solid rgba(0, 0, 0, 0.1);
+      border-radius: 50%;
+      border-top: 5px solid #ff4081;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Container */
+    .container {
+      background-color: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+      animation: fadeIn 0.8s ease;
+      position: relative;
+    }
+
+    /* Header */
+    h1 {
+      font-size: 24px;
+      color: #ff4081;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    /* Dark Mode Toggle */
+    .toggle-dark-mode {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 24px;
+      color: #ff4081;
+      transition: color 0.3s ease;
+    }
+    .dark-mode .toggle-dark-mode {
+      color: #1f8ef1;
+    }
+
+    /* QR Code */
+    .qr-code {
+      margin: 20px 0;
+    }
+    .qr-code img {
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      max-width: 100%;
+    }
+
+    /* Payment Details */
+    .payment-details {
+      background-color: #f3e5f5;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      margin: 20px 0;
+    }
+    .payment-details p {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+
+    .original-amount {
+      font-size: 20px;
+      color: #d32f2f;
+      text-decoration: line-through;
+    }
+    .discounted-amount {
+      font-size: 22px;
+      color: #388e3c;
+      font-weight: 700;
+    }
+    .copy-icon {
+      margin-left: 10px;
+      cursor: pointer;
+      color: #ff4081;
+      transition: color 0.3s ease;
+    }
+    .copy-icon:hover {
+      color: #c2185b;
+    }
+
+    /* Timer */
+    .timer, .discount-timer {
+      font-size: 20px;
+      color: #f44336;
+      margin: 20px 0;
+      font-weight: 600;
+      background-color: #ffebee;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .progress-bar {
+      width: 100%;
+      background-color: #e1f5fe;
+      border-radius: 10px;
+      margin-top: 15px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 20px;
+      background-color: #ff4081;
+      width: 100%;
+      transition: width 1s linear;
+    }
+
+    /* Button */
+    .confirm-button {
+      background-color: #1f8ef1;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+      margin-top: 20px;
+    }
+    .confirm-button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Instructions */
+    .instructions {
+      font-size: 16px;
+      color: #3949ab;
+      background-color: #e3f2fd;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Expired Content */
+    .expired-content {
+      display: none;
+      font-size: 18px;
+      color: #d32f2f;
+      margin-top: 20px;
+      background-color: #ffccbc;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Notifications */
+    .notification {
+      display: none;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #8bc34a;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 14px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 0.8s ease, slideDown 0.5s ease-out;
+      z-index: 1000;
+    }
+
+    /* Dark Mode */
+    .dark-mode {
+      background: #121212;
+      color: #f0f0f0;
+    }
+    .dark-mode .container {
+      background-color: #1f1f1f;
+      border: 1px solid #1f8ef1;
+    }
+    .dark-mode .payment-details {
+      background-color: #2a2a2a;
+      color: #f0f0f0;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+    .dark-mode .highlight {
+      box-shadow: 0 0 20px rgba(31, 142, 241, 0.7);
+    }
+    .dark-mode .confirm-button {
+      background-color: #1f8ef1;
+    }
+    .dark-mode .notification {
+      background-color: #1f8ef1;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes slideDown {
+      from {
+        top: -40px;
+      }
+      to {
+        top: 20px;
+      }
+    }
+
+    /* Media Queries */
+    @media (max-width: 600px) {
+      .container {
+        padding: 15px;
+      }
+      h1 {
+        font-size: 22px;
+      }
+      .payment-details {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loader -->
+  <div id="loader">
+    <div class="spinner"></div>
+  </div>
+
+  <div class="container highlight">
+    <h1>Thanh Toán Khóa Học Quốc Tế (Hạn 5 năm)</h1>
+
+    <!-- Light/Dark Mode Toggle -->
+    <button class="toggle-dark-mode" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">🌙</button>
+
+    <!-- QR Code Image -->
+    <div class="qr-code">
+      <img id="qr-image" src="./image/mb.png" alt="QR Code for payment" width="250">
+    </div>
+
+    <!-- Payment Details -->
+    <div class="payment-details">
+      <b><p class="name" id="name"></p></b>
+      <p id="bank-details"></p>
+      <p><strong>Nội dung chuyển khoản:</strong> <span id="payment-content"></span>
+        <i class="fas fa-copy copy-icon" onclick="copyToClipboard('payment-content')" aria-label="Copy transaction content"></i>
+      </p>
+      <div class="invoice" id="invoice">
+        <p class="original-amount" id="original-amount">Giá gốc: 19,980,000 VND</p>
+        <p class="discounted-amount" id="discounted-amount">Số tiền sau giảm giá: 7,850,000 VND
+          <i class="fas fa-copy copy-icon" onclick="copyToClipboard('discounted-amount')" aria-label="Copy discounted amount"></i>
+        </p>
+        <p id="discount-timer" class="discount-timer"></p>
+      </div>
+    </div>
+
+    <!-- Countdown Timer -->
+    <div class="timer" id="countdown">Thời gian còn lại: 10:00</div>
+    <div class="progress-bar">
+      <div class="progress-bar-fill" id="progress-bar-fill"></div>
+    </div>
+
+    <!-- Payment Confirmation Button -->
+    <button class="confirm-button" onclick="confirmPayment()">Xác nhận</button>
+
+    <!-- Payment Instructions -->
+    <div class="instructions">
+      <p>Vui lòng quét mã QR và hoàn tất thanh toán trong vòng 10 phút.</p>
+    </div>
+
+    <!-- Content to show after the countdown ends -->
+    <div class="expired-content" id="expired-content">
+      <p>Hết thời gian! Vui lòng thực hiện thanh toán lại.</p>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">Đã sao chép!</div>
+  </div>
+
+  <script>
+    // Show Loader on Page Load
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loader');
+      setTimeout(() => {
+        loader.style.display = 'none';
+      }, 1000);
+    });
+
+    // Set discount end date
+    const discountEndDate = new Date('2024-10-30T23:59:59');
+
+    // Function to handle discount and update the display
+    function handleDiscount() {
+      const currentDate = new Date();
+      const discountTimerElement = document.getElementById('discount-timer');
+      const discountedAmountElement = document.getElementById('discounted-amount');
+      const originalAmountElement = document.getElementById('original-amount');
+
+      if (currentDate < discountEndDate) {
+        const remainingDays = Math.ceil((discountEndDate - currentDate) / (1000 * 60 * 60 * 24));
+        discountTimerElement.textContent = `Giảm giá đến ngày 30/10. Còn lại ${remainingDays} ngày.`;
+      } else {
+        discountTimerElement.textContent = 'Hết thời hạn giảm giá.';
+        discountedAmountElement.style.display = 'none';
+        originalAmountElement.textContent = 'Số tiền: 19,980,000 VND';
+      }
+    }
+
+    // Toggle light/dark mode
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      document.querySelector('.container').classList.toggle('highlight');
+      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+    }
+
+    // Load saved theme preference
+    window.onload = function () {
+      if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+        document.querySelector('.container').classList.add('highlight');
+      }
+      setRandomImageAndName();
+      generatePaymentContent();
+      handleDiscount();
+      const countdownElement = document.getElementById('countdown');
+      startCountdown(10 * 60, countdownElement);
+    };
+
+    // Copy to clipboard function
+    function copyToClipboard(elementId) {
+      try {
+        const text = document.getElementById(elementId).textContent;
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        showNotification('Đã sao chép!');
+      } catch (err) {
+        showNotification('Lỗi sao chép!');
+      }
+    }
+
+    // Show notification
+    let notificationTimeout;
+    function showNotification(message) {
+      clearTimeout(notificationTimeout);
+      const notification = document.getElementById('notification');
+      notification.textContent = message;
+      notification.style.display = 'block';
+      notificationTimeout = setTimeout(() => {
+        notification.style.display = 'none';
+      }, 10000); // Display for 10 seconds
+    }
+
+    // Confirm payment function
+    function confirmPayment() {
+      showNotification('Sau khi thanh toán thành công chúng tôi sẽ gửi biên lai xác nhận về email');
+    }
+
+    // Function to randomly select between two images and set the corresponding name and bank details
+    function setRandomImageAndName() {
+      const details = [
+        { src: './image/mb.png', name: 'NGUYEN NGOC QUANG', account: '111420202005', bank: 'MB BANK' },
+        { src: './image/mb.png', name: 'NGUYEN NGOC QUANG', account: '111420202005', bank: 'MB BANK' }
+      ];
+
+      const randomIndex = Math.floor(Math.random() * details.length);
+      const selectedDetail = details[randomIndex];
+
+      document.getElementById('qr-image').src = selectedDetail.src;
+      document.getElementById('name').textContent = 'Tên: ' + selectedDetail.name;
+      document.getElementById('bank-details').textContent = `Số tài khoản: ${selectedDetail.account}, Ngân hàng: ${selectedDetail.bank}`;
+    }
+
+    // Generate a random 4-digit code and display the payment content
+    function generatePaymentContent() {
+      const randomCode = Math.floor(1000 + Math.random() * 9000);
+      document.getElementById('payment-content').textContent = 'ztehtkv2007' + randomCode;
+    }
+
+    // Countdown Timer (10 minutes)
+    function startCountdown(duration, display) {
+      let timer = duration, minutes, seconds;
+      const progressBarFill = document.getElementById('progress-bar-fill');
+      const totalDuration = duration;
+
+      const interval = setInterval(() => {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+
+        display.textContent = 'Thời gian còn lại: ' + minutes + ':' + seconds;
+
+        // Update progress bar
+        const progressPercentage = (timer / totalDuration) * 100;
+        progressBarFill.style.width = progressPercentage + '%';
+
+        if (--timer < 0) {
+          clearInterval(interval);
+          displayExpiredContent();
+        }
+      }, 1000);
+    }
+
+    // Display new content after countdown ends
+    function displayExpiredContent() {
+      document.getElementById('countdown').style.display = 'none';
+      document.getElementById('expired-content').style.display = 'block';
+      document.getElementById('confirmation-section').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
