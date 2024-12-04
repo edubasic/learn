@@ -277,7 +277,7 @@
   </div>
 
   <div class="container highlight">
-    <h1>Thanh Toán Khóa Học Quốc Tế (Hạn 5 năm)</h1>
+    <h1>Unlock the course</h1>
 
     <!-- Light/Dark Mode Toggle -->
     <button class="toggle-dark-mode" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">🌙</button>
@@ -291,12 +291,12 @@
     <div class="payment-details">
       <b><p class="name" id="name"></p></b>
       <p id="bank-details"></p>
-      <p><strong>Nội dung chuyển khoản:</strong> <span id="payment-content"></span>
+      <p><strong>Transfer content:</strong> <span id="payment-content"></span>
         <i class="fas fa-copy copy-icon" onclick="copyToClipboard('payment-content')" aria-label="Copy transaction content"></i>
       </p>
       <div class="invoice" id="invoice">
-        <p class="original-amount" id="original-amount">Giá gốc: 19,980,000 VND</p>
-        <p class="discounted-amount" id="discounted-amount">Số tiền sau giảm giá: 7,850,000 VND
+        <p class="original-amount" id="original-amount">Original price: 10,980,000 VND</p>
+        <p class="discounted-amount" id="discounted-amount">Amount after discount: 3,850,000 VND ("VAT")
           <i class="fas fa-copy copy-icon" onclick="copyToClipboard('discounted-amount')" aria-label="Copy discounted amount"></i>
         </p>
         <p id="discount-timer" class="discount-timer"></p>
@@ -310,11 +310,11 @@
     </div>
 
     <!-- Payment Confirmation Button -->
-    <button class="confirm-button" onclick="confirmPayment()">Xác nhận</button>
+    <button class="confirm-button" onclick="confirmPayment()">Submit</button>
 
     <!-- Payment Instructions -->
     <div class="instructions">
-      <p>Vui lòng quét mã QR và hoàn tất thanh toán trong vòng 10 phút.</p>
+      <p>Please scan the QR code and complete payment within 10 minutes.</p>
     </div>
 
     <!-- Content to show after the countdown ends -->
@@ -336,7 +336,7 @@
     });
 
     // Set discount end date
-    const discountEndDate = new Date('2024-10-30T23:59:59');
+    const discountEndDate = new Date('2024-12-29T23:59:59');
 
     // Function to handle discount and update the display
     function handleDiscount() {
@@ -346,8 +346,8 @@
       const originalAmountElement = document.getElementById('original-amount');
 
       if (currentDate < discountEndDate) {
-        const remainingDays = Math.ceil((discountEndDate - currentDate) / (1000 * 60 * 60 * 24));
-        discountTimerElement.textContent = `Giảm giá đến ngày 30/10. Còn lại ${remainingDays} ngày.`;
+        const remainingDays = Math.ceil((discountEndDate - currentDate) / (1000 * 60 * 60 * 23));
+        discountTimerElement.textContent = `Sale until 12/30. ${remainingDays} days left.`;
       } else {
         discountTimerElement.textContent = 'Hết thời hạn giảm giá.';
         discountedAmountElement.style.display = 'none';
@@ -405,22 +405,22 @@
 
     // Confirm payment function
     function confirmPayment() {
-      showNotification('Sau khi thanh toán thành công chúng tôi sẽ gửi biên lai xác nhận về email');
+      showNotification('After successful payment we will send confirmation receipt to email');
     }
 
     // Function to randomly select between two images and set the corresponding name and bank details
     function setRandomImageAndName() {
       const details = [
-        { src: './image/mb.png', name: 'NGUYEN NGOC QUANG', account: '111420202005', bank: 'MB BANK' },
-        { src: './image/mb.png', name: 'NGUYEN NGOC QUANG', account: '111420202005', bank: 'MB BANK' }
+        { src: './image/mb.png', name: 'NGUYEN NGOC QUANG', account: '111420202005', bank: 'Military Commercial Joint Stock Bank (MB BANK)' },
+        { src: './image/mb.png', name: 'NGUYEN NGOC QUANG', account: '111420202005', bank: 'Military Commercial Joint Stock Bank (MB BANK)' }
       ];
 
       const randomIndex = Math.floor(Math.random() * details.length);
       const selectedDetail = details[randomIndex];
 
       document.getElementById('qr-image').src = selectedDetail.src;
-      document.getElementById('name').textContent = 'Tên: ' + selectedDetail.name;
-      document.getElementById('bank-details').textContent = `Số tài khoản: ${selectedDetail.account}, Ngân hàng: ${selectedDetail.bank}`;
+      document.getElementById('name').textContent = 'Name: ' + selectedDetail.name;
+      document.getElementById('bank-details').textContent = `Account number: ${selectedDetail.account}, Bank: ${selectedDetail.bank}`;
     }
 
     // Generate a random 4-digit code and display the payment content
@@ -442,7 +442,7 @@
         minutes = minutes < 10 ? '0' + minutes : minutes;
         seconds = seconds < 10 ? '0' + seconds : seconds;
 
-        display.textContent = 'Thời gian còn lại: ' + minutes + ':' + seconds;
+        display.textContent = 'Time remaining: ' + minutes + ':' + seconds;
 
         // Update progress bar
         const progressPercentage = (timer / totalDuration) * 100;
